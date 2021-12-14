@@ -1,0 +1,141 @@
+*{
+box-sizing: border-box;
+}
+
+body{
+     /* background-image: url("/img/fhEwl.png"); */
+     background-size: cover;
+     opacity: 1;
+     background-color: rgb(255, 255, 255);
+}
+
+.card{
+    box-shadow: -4px 4px 38px -3px rgba(0,0,0,0.75);
+    position: fixed;
+    height: 80%;
+    width:  70%;
+    top: 10%;
+    bottom: 10%;
+    left: 15%;
+    right: 10%;
+    opacity: 1;
+    background-color: white;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-areas:
+    "Left right"
+
+}
+
+.Left{
+    background-color: rgb(42,193,140);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    opacity: 1;
+    grid-area: Left;
+}
+
+.Left > h1{
+    transform: translateY(400%);
+    color: white;
+    font-size: 2.5vw;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+.Left > p{
+    text-align: center;
+    color: white;
+    font-size: 1.2vw;
+    transform: translateY(350%);
+    margin-left: 0.5rem;
+}
+
+.right{
+    grid-area: right;
+}
+
+.btn-1{
+    background-color: white;
+    transform: translate(90%, 550%);
+    height: 5%;
+    width: 35%;
+    border:none;
+    border-radius: 25px;
+    color: black;
+    font-size: large;
+}
+
+.right > h1{
+    text-align: center;
+    transform: translateY(250%);
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-size: 2.5vw;
+    font-weight: bold;
+}
+
+.right > p{
+    text-align: center;
+    transform: translateY(500%);
+    color: rgb(152, 154, 155);
+    font-size: 1vw;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 40px;
+  width: 70px;
+  height: 60px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 7px;
+  border-radius: 70%;
+  transform: translate(600%, 250%);
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.form-1{
+    transform: translateY(80%);
+    text-align: center;
+}
+
+.btn-2{
+    height: 3.2rem;
+    width: 13rem;
+    border:none;
+    background-color: rgb(40,180,152);
+    border-radius: 25px;
+    color: white;
+    font-size: large;
+}
+
+.input-box{
+    height: 30%;
+    width: 50%;
+    border-radius: 20px;
+    background-color: rgb(238, 245, 243);
+    margin-bottom: 1rem;
+    font-size: large;
+    padding: 1rem;
+    border:none;
+}
+

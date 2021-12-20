@@ -83,15 +83,14 @@ body{
 }
 
 .fa {
-  padding: 20px;
-  font-size: 40px;
-  width: 70px;
-  height: 60px;
+  padding: 1%;
+  width: 5%;
+  height: 6%;
   text-align: center;
   text-decoration: none;
-  margin: 5px 7px;
+  margin: 1% 1%;
   border-radius: 70%;
-  transform: translate(600%, 250%);
+  transform: translate(750%, 250%);
 }
 
 .fa:hover {
@@ -114,28 +113,30 @@ body{
 }
 
 .form-1{
-    transform: translateY(80%);
+    transform: translateY(30%);
     text-align: center;
 }
 
 .btn-2{
-    height: 3.2rem;
-    width: 13rem;
+    height: 100%;
+    width: 20%;
     border:none;
     background-color: rgb(40,180,152);
     border-radius: 25px;
     color: white;
-    font-size: large;
+    font-size: medium;
 }
 
 .input-box{
-    height: 30%;
+    height: 5%;
     width: 50%;
     border-radius: 20px;
     background-color: rgb(238, 245, 243);
-    margin-bottom: 1rem;
+    margin-bottom: 0%;
     font-size: large;
-    padding: 1rem;
+    padding: 2%;
     border:none;
+    font-size: small;
+    margin-top: 2%;
 }
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/addFine.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <p>Fine Management</p>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><img src="/img/img_avater.png" alt="Avatar" class="avatar"><span>Imtiaz Mehedi <br>Profile</span>
+                </li>
+                <li><a href="#"><i class="fas fa-qrcode"></i>Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-link"></i>Fine List</a></li>
+                <li><a href="#"><i class="fas fa-stream"></i>Fine Entry</a></li>
+                <li><a href="#"><i class="fas fa-calendar-week"></i>Report</a></li>
+                <li><a href="#"><i class="fas fa-sliders-h"></i>User</a></li>
+            </ul>
+        </div>
+        <div class="body card">
+            <form class="form-inline">
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" style="margin-left: 10px;">Name :</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>Choose...</option>
+                    <option value="1">Imtiaz</option>
+                    <option value="2">Zahid vai</option>
+                    <option value="3">Mehedi</option>
+                </select>
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" style="margin-left: 10px;">Fine Type :</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>Choose...</option>
+                    <option value="1">Late in Scrum</option>
+                    <option value="2">Late in Meeting</option>
+                    <option value="3">Jemon khusi temon fine</option>
+                </select>
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
+                    style="margin-left: 10px; width: 100%; margin-left: -382px;">Date Time :</label>
+                <input type="date" style="width: 98%; margin-left: 10px; display: block;" class="form-control"
+                    id="formGroupExampleInput" placeholder="Example input">
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
+                    style="margin-left: 10px; width: 100%; margin-left: -375px;">Fine Amount :</label>
+                <input type="number" style="width: 98%; margin-left: 10px; display: block; margin-bottom: 10px;" class="form-control"
+                    id="formGroupExampleInput" placeholder="Fine Amount">
+                <button type="submit" class="btn btn-primary my-1" style="margin-left: 10px; background-color: rgb(42, 193, 140);">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

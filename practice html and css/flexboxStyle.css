@@ -1,0 +1,22 @@
+.child{
+    display: flex;
+    background-color: skyblue;
+    margin: 10px;
+    padding: 1px ;
+    flex-wrap: wrap;
+}
+.child:nth-child(odd){
+    background-color: lightcoral;
+}
+
+.box{
+    flex-basis: 44px;
+    background-color: saddlebrown;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.box1{
+    flex-grow: 1;
+    background-color: sandybrown;
+    flex-shrink: 3;
+}

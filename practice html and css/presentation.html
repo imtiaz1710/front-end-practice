@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        height: 2000px;
+      }
+
+      .padding-margin-fontsize {
+        background-color: rgb(82, 16, 41);
+        color: white;
+        width: 200px;
+        height: 200px;
+        padding: 2rem;
+        margin-top: 50px;
+        margin-left: 50px;
+      }
+
+      button {
+        background-color: rgb(167, 121, 90);
+        margin-top: 20px;
+        margin-left: 50px;
+        border-radius: 15%;
+        height: 30px;
+      }
+
+      button:hover {
+        background-color: salmon;
+      }
+
+      .position-fixed {
+        background-color: burlywood;
+        color: black;
+        width: 200px;
+        height: 200px;
+        padding: 2rem;
+        margin-top: 50px;
+        /* margin-left: 50px; */
+        /* position: fixed; */
+        text-align: center;
+      }
+
+      .position-fixed > p {
+        border: 3px solid gray;
+        transform: translate(0%, 100%);
+      }
+
+      .position-relative {
+        background-color: palevioletred;
+        color: black;
+        width: 200px;
+        height: 200px;
+        padding: 2rem;
+        margin-top: 50px;
+        /* margin-left: 400px; */
+        /* position: relative; */
+        top: 30px;
+        left: 300px;
+        right: 330px;
+      }
+
+      .position-absolute {
+        background-color: palevioletred;
+        color: black;
+        width: 200px;
+        height: 200px;
+        padding: 2rem;
+        margin-top: 50px;
+        /* margin-left: 400px; */
+        /* position: absolute; */
+        top: 30px;
+        left: 300px;
+        right: 330px;
+      }
+
+      .multi {
+        /* Column count property */
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+
+        /* Column gap property */
+        -webkit-column-gap: 40px;
+        -moz-column-gap: 40px;
+        column-gap: 40px;
+
+        /* Column style property */
+        -webkit-column-rule-style: solid;
+        -moz-column-rule-style: solid;
+        column-rule-style: solid;
+
+        margin-top: 50px;
+      }
+
+      .animation {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(231, 145, 145);
+        color: white;
+        text-align: center;
+        position: relative;
+        animation-name: example;
+        animation-duration: 4s;
+        margin-top: 20px;
+      }
+
+      .scroll {
+        display: block;
+        border: 1px solid red;
+        padding: 5px;
+        margin-top: 5px;
+        width: 300px;
+        height: 100px;
+        overflow: scroll;
+        /* overflow: auto; */
+        /* overflow: hidden; */
+        /* overflow: visible; */
+      }
+      
+      .auto {
+        display: block;
+        border: 1px solid red;
+        padding: 5px;
+        margin-top: 5px;
+        width: 300px;
+        height: 100px;
+      }
+
+      .animation > p {
+        justify-content: center;
+        position: relative;
+        top: 50%;
+      }
+
+      .animation1 {
+        animation-duration: 3s;
+        animation-name: slidein;
+        margin-top: 100px;
+        color: #b4a169;
+        animation-iteration-count: 5;
+      }
+      @keyframes slidein {
+        from {
+          margin-left: 100%;
+          width: 300%;
+        }
+        to {
+          margin-left: 0%;
+          width: 100%;
+        }
+      }
+
+      @keyframes example {
+        0% {
+          background-color: #6a1f74;
+          left: 0px;
+          top: 0px;
+        }
+        25% {
+          background-color: yellow;
+          left: 200px;
+          top: 0px;
+        }
+        50% {
+          background-color: rgb(140, 0, 255);
+          left: 200px;
+          top: 200px;
+        }
+        75% {
+          background-color: green;
+          left: 0px;
+          top: 200px;
+        }
+        100% {
+          background-color: rgb(27, 0, 0);
+          left: 0px;
+          top: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="padding-margin-fontsize">
+      <p>Padding-margin-fontsize and easy property</p>
+    </div>
+    <div>
+      <button>Button Hover Example</button>
+    </div>
+    <div class="position-fixed">
+      <p>position: fixed and transform;</p>
+    </div>
+    <div class="position-relative">
+      <p>position relative Example;</p>
+    </div>
+    <div class="position-absolute">
+      <p>position absolute Example;</p>
+    </div>
+    <div class="multi">
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem
+      maxime deserunt rerum quidem illo eaque esse nesciunt. Ex error, qui quasi
+      a accusamus enim ut libero, quidem aliquam modi nemo! Lorem ipsum dolor
+      sit amet consectetur adipisicing elit. Cum ex dolore reprehenderit quos
+      iure. Suscipit optio ipsa odio impedit veritatis ratione reiciendis
+      perspiciatis assumenda, soluta quasi quae officiis et voluptas itaque hic
+      quisquam harum id laudantium eligendi nostrum iure voluptate dolorum
+      dolorem! Tempora, deserunt excepturi magni qui ratione vitae vel! Lorem
+      ipsum dolor sit amet consectetur adipisicing elit. Quae, aspernatur.
+    </div>
+    <div class="animation">
+      <p>animation</p>
+    </div>
+    <br />
+    <p>Example of overflow:</p>
+    <div class="scroll">
+      I am going to keep lot of content here just to show you how scrollbars
+      works if there is an overflow in an element box. This provides your
+      horizontal as well as vertical scrollbars. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Nobis ad alias natus aliquam aspernatur
+      consequuntur magnam vero nulla culpa voluptatibus.
+    </div>
+    <div class="animation1"><h1>Animaiton Example</h1></div>
+  </body>
+</html>

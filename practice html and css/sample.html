@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Web page!</title>
+  <style>
+    li {
+      list-style-type: none;
+    }
+
+    .left {
+      color: white;
+      font-size: large;
+      left: 0;
+      height: 100%;
+      width: 17%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+      background-color: rgb(5, 7, 27);
+    }
+
+    .right {
+      right: 0;
+      height: 100%;
+      width: 83%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+      background-color: rbg(229, 229, 229);
+    }
+
+    .image {
+      border: 2px solid;
+      border-radius: 20%;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      height: 200%;
+      width: 100%;
+      padding: 3px;
+      background-color: rgb(255, 255, 255);
+      margin-left: 10px;
+      margin-right: 180px;
+      margin-top: 10px;
+      margin-bottom: 0px;
+    }
+
+    .tableCard {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      height: 100%;
+      width: 100%;
+      padding: 3px;
+      background-color: rgb(255, 255, 255);
+      margin-left: 10px;
+      margin-right: 180px;
+      margin-top: 10px;
+      margin-bottom: 50px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .column {
+      float: left;
+      width: 25%;
+      padding: 0 10px;
+    }
+
+    /* Remove extra left and right margins, due to padding in columns */
+    .row {
+      margin: 0 -5px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Style the counter cards */
+    .infoCard {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      /* this adds the "card" effect */
+      padding: 16px;
+      text-align: center;
+      background-color: #f1f1f1;
+      height: 100px;
+    }
+
+    /* Responsive columns - one column layout (vertical) on small screens */
+    @media screen and (max-width: 600px) {
+      .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+      }
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      /* border-collapse: collapse; */
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    @media (max-width: 800px) {
+      li {
+        display: inline-block;
+        margin-left: 10px;
+        margin-bottom: 30px;
+      }
+      .left{
+        width: 30%;
+      }
+      .right{
+        width: 70%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="common">
+    <div class="left">
+      <ul style="left: 4px">
+        <img
+          src="img/comapnyIcon.png"
+          alt="Avatar"
+          class="image"
+          width="100%"
+          height="80px"
+          style="position: relative; right: 10px"
+        />
+      </ul>
+      <ul>
+        <br />
+        <li>HOME</li>
+        <br />
+        <li>SERVICES</li>
+        <br />
+        <li>OUR WORK</li>
+        <br />
+        <li>WHY US?</li>
+        <br />
+        <li>BLOG</li>
+        <br />
+        <li>COMPANY & CULTURE</li>
+        <br />
+        <li>CONTACT</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div class="card">
+        <div class="row">
+          <div class="column">
+            <div class="infoCard">TOTAL EMPLOY<br />130</div>
+          </div>
+          <div class="column">
+            <div class="infoCard">TOTAL TEAM<br />10</div>
+          </div>
+          <div class="column">
+            <div class="infoCard">TOTAL SOFTWARE ENGINEER <br />80</div>
+          </div>
+          <div class="column">
+            <div class="infoCard">TOTAL SOINIK<br />20</div>
+          </div>
+          <div>
+            <br />
+            <br />
+            <h1 style="text-align: center"><br /></h1>
+          </div>
+          <div>
+            <img
+              src="img/sampleKAZ.PNG"
+              alt="Avatar"
+              style="width: 100%"
+              height="50%"
+            />
+          </div>
+          <div class="tableCard">
+            <h2 style="text-align: center; border-radius: 20%">My Table</h2>
+            <table>
+              <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+              </tr>
+              <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+              </tr>
+              <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+              </tr>
+              <tr>
+                <td>Ernst Handel</td>
+                <td>Roland Mendel</td>
+                <td>Austria</td>
+              </tr>
+              <tr>
+                <td>Island Trading</td>
+                <td>Helen Bennett</td>
+                <td>UK</td>
+              </tr>
+              <tr>
+                <td>Laughing Bacchus Winecellars</td>
+                <td>Yoshi Tannamuri</td>
+                <td>Canada</td>
+              </tr>
+              <tr>
+                <td>Magazzini Alimentari Riuniti</td>
+                <td>Giovanni Rovelli</td>
+                <td>Italy</td>
+              </tr>
+            </table>
+          </div>
+          <div class="tableCard">
+            <h2 style="text-align: center; border-radius: 20%">My Form</h2>
+            <form action="">
+              <label for="fname">First name:</label><br />
+              <input type="text" id="fname" name="fname" value="John" /><br />
+              <label for="lname">Last name:</label><br />
+              <input
+                type="text"
+                id="lname"
+                name="lname"
+                value="Doe"
+              /><br /><br />
+              <input type="submit" value="Submit" />
+            </form>
+          </div>
+          <p style="margin-left: 20px;">This is a paragraph</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

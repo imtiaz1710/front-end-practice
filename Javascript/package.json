@@ -1,0 +1,14 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "basic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "imtiaz",
+  "license": "ISC",
+  "dependencies": {
+    "underscore": "^1.13.2"
+  }
+}

@@ -1,0 +1,17 @@
+<h1>Total count: {{answer}}</h1>
+<p>data-binding works!</p>
+
+<button (click)="onClick(0)">Reset</button>
+<br> <br>
+<input type="number" [(ngModel)]="answer">
+
+<p *ngIf="answer > 50"
+[class.highlightRed]="answer > 75" [class.highlightGreen]="answer > 60 && answer < 70">
+    Uhh, that's a large nubmer.
+</p>
+
+<Ul>
+    <li *ngFor="let value of numbers">
+        {{value}}
+    </li>
+</Ul>

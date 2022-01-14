@@ -1,0 +1,29 @@
+<h2>Todo List</h2>
+
+<div>
+  <div>
+    <label>Assigned to:</label>
+    <input type="text" [(ngModel)]="newTodoItem.assignedTo" />
+  </div>
+  <div>
+    <label>Description:</label>
+    <input type="text" [(ngModel)]="newTodoItem.description" />
+  </div>
+  <button (click)="addItem()">Add</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Assigned To</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of todoListd; i as index">
+      <td>{{ item.assignedTo }}</td>
+      <td>{{ item.description }}</td>
+      <td><button (click)="removeItem(item)">X</button></td>
+    </tr>
+  </tbody>
+</table>

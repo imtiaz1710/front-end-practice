@@ -20,7 +20,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of todoListd; i as index">
+    <tr *ngFor="let item of todoList;">
       <td>{{ item.assignedTo }}</td>
       <td>{{ item.description }}</td>
       <td><button (click)="removeItem(item)">X</button></td>

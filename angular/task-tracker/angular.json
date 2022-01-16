@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "9c3ff36e-f6ca-4008-9c9f-8303d6be6acd"
+    "analytics": "3724a9ec-3e27-4809-9a9e-bd238737a209"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hello-angular": {
+    "task-tracker": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -42,7 +42,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hello-angular",
+            "outputPath": "dist/task-tracker",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -94,10 +94,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hello-angular:build:production"
+              "browserTarget": "task-tracker:build:production"
             },
             "development": {
-              "browserTarget": "hello-angular:build:development"
+              "browserTarget": "task-tracker:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -105,7 +105,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hello-angular:build"
+            "browserTarget": "task-tracker:build"
           }
         },
         "test": {
@@ -129,5 +129,5 @@
       }
     }
   },
-  "defaultProject": "hello-angular"
+  "defaultProject": "task-tracker"
 }

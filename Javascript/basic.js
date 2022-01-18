@@ -1,3 +1,4 @@
+const { reject } = require('underscore');
 var _ = require('underscore');
 
 
@@ -92,5 +93,21 @@ Hello();
  });
 
 
+ //promise 
 
+ var promiseVar = control => {
+     return new Promise((resolve, reject) => { 
+        setInterval(() =>{
+            if(control)
+                resolve('simple success data');
+            else 
+                reject('simple error data');
+            }, 100)
+     })
+ }
 
+ promiseVar(false)
+    .then((data) => console.log(data))
+    .catch((err) => console.log(err));
+
+ 

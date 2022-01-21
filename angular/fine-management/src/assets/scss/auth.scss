@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-size: cover;
+  opacity: 1;
+  background-color: rgb(255, 255, 255);
+}
+
+.card {
+  box-shadow: -4px 4px 38px -3px rgba(0, 0, 0, 0.75);
+  position: fixed;
+  height: 80%;
+  width: 70%;
+  top: 10%;
+  bottom: 10%;
+  left: 15%;
+  right: 10%;
+  opacity: 1;
+  background-color: white;
+  border-radius: 25px;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-template-areas: "Left right";
+}
+
+.Left {
+  background-color: rgb(42, 193, 140);
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  opacity: 1;
+  grid-area: Left;
+}
+
+.right {
+  grid-area: right;
+}
+
+.btn-1 {
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+.btn-2 {
+  margin-top: 15px;
+  background-color: rgb(40, 180, 152);
+}
+
+.right > h1 {
+  text-align: center;
+  transform: translateY(250%);
+  font-size: 2.5vw;
+  font-weight: bold;
+}
+
+.right > p {
+  text-align: center;
+  transform: translateY(500%);
+  color: rgb(152, 154, 155);
+  font-size: 1vw;
+}
+
+.fa {
+  padding: 1%;
+  width: 5%;
+  height: 6%;
+  text-align: center;
+  text-decoration: none;
+  margin: 1% 1%;
+  border-radius: 70%;
+  transform: translate(750%, 250%);
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3b5998;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.form-1 {
+  transform: translateY(30%);
+  text-align: center;
+}
+
+.input-box {
+  height: 5%;
+  width: 50%;
+  border-radius: 20px;
+  background-color: rgb(238, 245, 243);
+  margin-bottom: 0%;
+  font-size: large;
+  padding: 2%;
+  border: none;
+  font-size: small;
+  margin-top: 2%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}

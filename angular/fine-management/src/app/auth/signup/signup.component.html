@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="Left row align-content-center text-center">
+    <h1 class="h2" style="color: white">Already a Memeber?</h1>
+    <br />
+    <br />
+    <br />
+    <p class="h5" style="color: white">Login to access</p>
+    <br />
+    <br />
+    <br />
+    <div class="text-center">
+      <button type="submit" class="btn btn-1 btn-primary text-center">
+        <a routerLink="/login">Login</a>
+      </button>
+    </div>
+  </div>
+  <div class="right">
+    <div class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+          <!-- Form -->
+          <form class="form-example" action="" method="post">
+            <h2>Create a New Account</h2>
+            <!-- Input fields -->
+            <div class="form-group">
+              <label for="username">Email:</label>
+              <input
+                type="text"
+                class="form-control username"
+                id="username"
+                placeholder="Email..."
+                name="username"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                class="form-control password"
+                id="password"
+                placeholder="Password..."
+                name="password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Confirm Password:</label>
+              <input
+                type="password"
+                class="form-control password"
+                id="password"
+                placeholder="Confirm Password..."
+                name="password"
+              />
+            </div>
+            <div>
+            <label for="team">Select a Team:</label>
+              <select class="dropdown form-control" name="team" id="team">
+                <option value="Phantom">Phantom</option>
+                <option value="Artisan">Artisan</option>
+                <option value="ODC">ODC</option>
+                <option value="Marvel">Marvel</option>
+                <option value="Optimus">Optimus</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Tech">Tech</option>
+                <option value="Admin">Admin</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-2 btn-primary btn-customize">
+              Sign Up
+            </button>
+            <!-- End input fields -->
+          </form>
+          <!-- Form end -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,11 @@
 {
-  "posts": [
+  "singupUsers": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "email": "imtiaz.mehedi.iubat@gmail.com",
+      "password": "2",
+      "confirmPassword": "2",
+      "team": "ODC",
+      "id": 1
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
-  "singupUsers": []
+  ]
 }

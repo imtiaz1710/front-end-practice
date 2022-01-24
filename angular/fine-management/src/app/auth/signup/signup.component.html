@@ -23,12 +23,12 @@
             <h2>Create a New Account</h2>
             <!-- Input fields -->
             <div class="form-group">
-              <label for="username">Email:</label>
+              <label for="email">Email:</label>
               <input
                 formControlName="email"
                 type="text"
                 class="form-control username"
-                id="username"
+                id="email"
                 placeholder="Email..."
               />
             </div>
@@ -55,14 +55,7 @@
             <div>
               <label for="team">Select a Team:</label>
               <select class="dropdown form-control" id="team" formControlName="team">
-                <option value="Phantom">Phantom</option>
-                <option value="Artisan">Artisan</option>
-                <option value="ODC">ODC</option>
-                <option value="Marvel">Marvel</option>
-                <option value="Optimus">Optimus</option>
-                <option value="Mobile">Mobile</option>
-                <option value="Tech">Tech</option>
-                <option value="Admin">Admin</option>
+                <option *ngFor="let team of TEAMS" [ngValue]="team.name">{{team.name}}</option>
               </select>
             </div>
             <button type="submit" class="btn btn-2 btn-primary btn-customize">

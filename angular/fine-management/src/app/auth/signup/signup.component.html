@@ -19,14 +19,20 @@
       <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
           <!-- Form -->
-          <form class="form-example" [formGroup]="signupForm" (ngSubmit)="signUp()">
+          <form
+            class="form-example"
+            [formGroup]="signupForm"
+            (ngSubmit)="signUp()"
+          >
             <h2>Create a New Account</h2>
             <!-- Input fields -->
             <div class="form-group">
               <label for="email">Email:</label>
               <input
+                pattern=".+@globex\.com"
+                size="30"
                 formControlName="email"
-                type="text"
+                type="email"
                 class="form-control username"
                 id="email"
                 placeholder="Email..."
@@ -35,6 +41,7 @@
             <div class="form-group">
               <label for="password">Password:</label>
               <input
+                required
                 formControlName="password"
                 type="password"
                 class="form-control password"
@@ -54,8 +61,14 @@
             </div>
             <div>
               <label for="team">Select a Team:</label>
-              <select class="dropdown form-control" id="team" formControlName="team">
-                <option *ngFor="let team of TEAMS" [ngValue]="team.name">{{team.name}}</option>
+              <select
+                class="dropdown form-control"
+                id="team"
+                formControlName="team"
+              >
+                <option *ngFor="let team of TEAMS" [ngValue]="team.name">
+                  {{ team.name }}
+                </option>
               </select>
             </div>
             <button type="submit" class="btn btn-2 btn-primary btn-customize">

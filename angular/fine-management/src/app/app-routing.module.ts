@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { FineEntryComponent } from './fine/fine-entry/fine-entry.component';
+import { FineListComponent } from './fine/fine-list/fine-list.component';
+import { ReportComponent } from './fine/report/report.component';
 import { SideAndNavBarComponent } from './shared/side-and-nav-bar/side-and-nav-bar.component';
 
 const routes: Routes = [
@@ -17,6 +19,8 @@ const routes: Routes = [
     component: SideAndNavBarComponent,
     children: [
       { path: 'fineEntry', component: FineEntryComponent },
+      { path: 'fineList', component: FineListComponent },
+      { path: 'report', component: ReportComponent },
     ],
   },
 ];

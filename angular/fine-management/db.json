@@ -6,6 +6,13 @@
       "confirmPassword": "2",
       "team": "ODC",
       "id": 1
+    },
+    {
+      "email": "imtiaz@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "team": "ODC",
+      "id": 2
     }
   ]
 }

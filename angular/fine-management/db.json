@@ -13,6 +13,13 @@
       "confirmPassword": "123",
       "team": "ODC",
       "id": 2
+    },
+    {
+      "email": "imtiaz.mehedi.iubat@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "team": "Artisan",
+      "id": 3
     }
   ]
 }

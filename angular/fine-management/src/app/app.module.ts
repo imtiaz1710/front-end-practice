@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FineModule } from './fine/fine.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FineModule } from './fine/fine.module';
     AuthModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    FineModule
+    FineModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

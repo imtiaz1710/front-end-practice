@@ -4,12 +4,14 @@ import { FineEntryComponent } from './fine-entry/fine-entry.component';
 import { SharedModule } from '../shared/shared.module';
 import { FineListComponent } from './fine-list/fine-list.component';
 import { ReportComponent } from './report/report.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     FineEntryComponent,
     FineListComponent,
-    ReportComponent
+    ReportComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

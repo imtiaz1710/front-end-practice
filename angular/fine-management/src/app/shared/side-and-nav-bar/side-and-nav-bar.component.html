@@ -8,20 +8,30 @@
     >
       <div class="sidebar-heading"><h4>Fine Management</h4></div>
       <div class="list-group list-group-flush">
-        <a routerLink="/main/dashboard" class="list-group-item list-group-item-action bg-light"
+        <a
+          routerLink="/main/dashboard"
+          class="list-group-item list-group-item-action bg-light"
           ><i class="fa fa-qrcode navStyle"></i> Dashboard</a
         >
-        <a routerLink="/main/fineList" class="list-group-item list-group-item-action bg-light"
+        <a
+          routerLink="/main/fineList"
+          class="list-group-item list-group-item-action bg-light"
           ><i class="fa fa-link navStyle"></i> Fine List</a
         >
-        <a routerLink="/main/fineEntry" class="list-group-item list-group-item-action bg-light"
+        <a
+          routerLink="/main/fineEntry"
+          class="list-group-item list-group-item-action bg-light"
           ><i class="fa fa-plus navStyle"></i> Fine Entry</a
         >
-        <a routerLink="/main/report" class="list-group-item list-group-item-action bg-light"
+        <a
+          routerLink="/main/report"
+          class="list-group-item list-group-item-action bg-light"
           ><i class="fa fa-book navStyle"></i> Report</a
         >
-        <a routerLink="/main/user" class="list-group-item list-group-item-action bg-light"
-          ><i class="fa fa-user navStyle"></i> User</a
+        <a
+          routerLink="/main/user"
+          class="list-group-item list-group-item-action bg-light"
+          ><i class="fa fa-users navStyle"></i> Users</a
         >
       </div>
     </div>
@@ -30,22 +40,30 @@
     <div id="page-content-wrapper">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <button (click)="clickEvent()" class="btn"><i class="fa fa-align-justify fa-2x" style="color: rgb(112, 112, 113);"></i></button>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
+          <button (click)="clickEvent()" class="btn">
+            <i
+              class="fa fa-align-justify fa-2x"
+              style="color: rgb(112, 112, 113)"
+            ></i>
           </button>
+          <div class="dropdown">
+            <a
+              style="font-size: 30px; margin-right: 100px"
+              class="btn fa fa-user"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+            </a>
+            <ul class="dropdown-menu"  aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" routerLink="/main/user">My Profile</a></li>
+              <li><a class="dropdown-item" href="#">LogOut</a></li>
+            </ul>
+          </div>
         </div>
       </nav>
       <div class="container-fluid">
-        <router-outlet></router-outlet>  
+        <router-outlet></router-outlet>
       </div>
     </div>
     <!-- /#page-content-wrapper -->

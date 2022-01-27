@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { LogoutComponent } from './auth/logout/logout.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { DashboardComponent } from './fine/dashboard/dashboard.component';
 import { FineEntryComponent } from './fine/fine-entry/fine-entry.component';
@@ -13,9 +14,8 @@ import { UserInfoComponent } from './user/user-info/user-info.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: '', component: LoginComponent, pathMatch: 'full' },
-  // { path: 'sideAndNavBar', component: SideAndNavBarComponent },
-  // { path: 'fineEntry', component: FineEntryComponent },
   {
     path: 'main',
     component: SideAndNavBarComponent,
@@ -24,8 +24,8 @@ const routes: Routes = [
       { path: 'fineList', component: FineListComponent },
       { path: 'report', component: ReportComponent },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'user', component: UserInfoComponent }
-    ],
+      { path: 'user', component: UserInfoComponent },
+    ]
   },
 ];
 

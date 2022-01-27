@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccessChecker } from 'src/app/shared/access-checker';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private accessCheck : AccessChecker) { }
   ngOnInit(): void {
+    this.accessCheck.preventUnauthorizedAccess();
   }
-
 }

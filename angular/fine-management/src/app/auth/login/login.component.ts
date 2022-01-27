@@ -35,8 +35,10 @@ export class LoginComponent implements OnInit {
         if (user) {
           alert('Login Success');
           this.loginForm.reset();
-          this.router.navigate(['/']);
-        } else {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.router.navigate(['/main/dashboard']);
+        } 
+        else {
           alert('User not Found');
         }
       },

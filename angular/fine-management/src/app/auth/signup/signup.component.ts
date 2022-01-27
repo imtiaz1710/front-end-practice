@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  signUp() {
+  signUp() {  
     this.http.post<any>('http://localhost:3000/singupUsers', this.signupForm.value)
     .subscribe({
         next: (res: any) => {

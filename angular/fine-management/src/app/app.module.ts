@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FineModule } from './fine/fine.module';
 import { UserModule } from './user/user.module';
+import { SharedModule } from './shared/shared.module';
+import { AccessChecker } from './shared/access-checker';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { UserModule } from './user/user.module';
     FineModule,
     UserModule
   ],
-  providers: [],
+  providers: [AccessChecker],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,8 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FineModule } from './fine/fine.module';
 import { UserModule } from './user/user.module';
-import { SharedModule } from './shared/shared.module';
 import { AccessChecker } from './shared/access-checker';
+import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { AccessChecker } from './shared/access-checker';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FineModule,
-    UserModule
+    UserModule,
+    ToastrModule.forRoot(),
+    SharedModule
   ],
   providers: [AccessChecker],
   bootstrap: [AppComponent]

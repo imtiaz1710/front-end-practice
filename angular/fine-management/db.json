@@ -20,6 +20,27 @@
       "confirmPassword": "123",
       "team": "Artisan",
       "id": 3
+    },
+    {
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "team": "",
+      "id": 4
+    },
+    {
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "team": "",
+      "id": 5
+    },
+    {
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "team": "",
+      "id": 6
     }
   ]
 }

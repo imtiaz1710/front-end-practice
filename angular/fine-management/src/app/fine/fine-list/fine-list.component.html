@@ -1,4 +1,15 @@
-<div class="body card" style="padding: 3%; font-size: 20px; margin-top: 15px">
+<div class="container mt-5">
+  <ngx-datatable class="material p-4" [rows]="rows" [columns]="columns"
+    [headerHeight]="50"
+    [rowHeight]="50"
+    [footerHeight]="50"
+    [scrollbarV]="true"
+    [scrollbarH]="true"
+    > 
+  </ngx-datatable>
+</div>
+
+<!-- <div class="body card" style="padding: 3%; font-size: 20px; margin-top: 15px">
   <table class="table">
     <thead>
       <tr>
@@ -65,4 +76,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->

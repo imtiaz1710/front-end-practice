@@ -10,6 +10,7 @@ import { FineListComponent } from './fine/fine-list/fine-list.component';
 import { ReportComponent } from './fine/report/report.component';
 import { SideAndNavBarComponent } from './shared/side-and-nav-bar/side-and-nav-bar.component';
 import { UserInfoComponent } from './user/user-info/user-info.component';
+import { UsersComponent } from './user/users/users.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -24,7 +25,7 @@ const routes: Routes = [
       { path: 'fineList', component: FineListComponent },
       { path: 'report', component: ReportComponent },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'user', component: UserInfoComponent },
+      { path: 'users', component: UsersComponent }
     ]
   },
 ];

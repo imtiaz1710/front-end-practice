@@ -12,6 +12,7 @@ import { SideAndNavBarComponent } from './shared/side-and-nav-bar/side-and-nav-b
 import { UserInfoComponent } from './user/user-info/user-info.component';
 import { UsersComponent } from './user/users/users.component';
 
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
@@ -25,13 +26,14 @@ const routes: Routes = [
       { path: 'fineList', component: FineListComponent },
       { path: 'report', component: ReportComponent },
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'users', component: UsersComponent }
-    ]
+      { path: 'users', component: UsersComponent },
+      { path: 'user', component: UserInfoComponent },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes), ReactiveFormsModule, FormsModule],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -11,11 +11,13 @@ import { UserModule } from './user/user.module';
 import { AccessChecker } from './shared/access-checker';
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './shared/shared.module';
+import { AlertConfig } from 'ngx-bootstrap/alert';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,9 +27,15 @@ import { SharedModule } from './shared/shared.module';
     FineModule,
     UserModule,
     ToastrModule.forRoot(),
-    SharedModule
+    SharedModule,
   ],
-  providers: [AccessChecker],
+  providers: [
+    AccessChecker,
+    AlertConfig,
+    BsDatepickerConfig,
+    BsDropdownConfig,
+    BsModalService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

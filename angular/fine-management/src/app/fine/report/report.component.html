@@ -72,7 +72,7 @@
 </div> -->
 
 <div>
-  <form class="form-group mt-5" style="margin-left: 180px; width: 30%;">
+  <form class="form-group mt-5" style="margin-left: 180px; width: 30%">
     <label class="mb-2" for="inlineFormCustomSelectPref">Name :</label>
     <select class="form-control" id="inlineFormCustomSelectPref">
       <option selected>Choose...</option>
@@ -90,7 +90,7 @@
       </button>
     </div>
   </form>
-  <div class="container mt-5" >
+  <div class="container mt-5">
     <ngx-datatable
       class="material p-4"
       [rows]="rows"
@@ -98,8 +98,9 @@
       [headerHeight]="50"
       [rowHeight]="50"
       [footerHeight]="50"
-      [scrollbarV]="true"
-      [scrollbarH]="true"
+      [scrollbarV]="false"
+      [scrollbarH]="false"
+      [columnMode]="'force'"
     >
     </ngx-datatable>
   </div>

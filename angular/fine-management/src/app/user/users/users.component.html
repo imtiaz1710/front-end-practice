@@ -1,10 +1,96 @@
 <div class="container mt-5">
-    <ngx-datatable class="material p-4" [rows]="rows" [columns]="columns"
-      [headerHeight]="50"
-      [rowHeight]="50"
-      [footerHeight]="50"
-      [scrollbarV]="true"
-      [scrollbarH]="true"
+  <ngx-datatable
+    class="material p-4"
+    [rows]="rows"
+    [columns]="columns"
+    [headerHeight]="50"
+    [rowHeight]="80"
+    [footerHeight]="50"
+    [scrollbarV]="false"
+    [scrollbarH]="true"
+    [columnMode]="'force'"
+  >
+    <ngx-datatable-column name="Name" prop="name"> </ngx-datatable-column>
+    <ngx-datatable-column name="Email" prop="email"> </ngx-datatable-column>
+    <ngx-datatable-column name="Phone No" prop="phoneNo">
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Team Name" prop="team"> </ngx-datatable-column>
+    <ngx-datatable-column name="Action" prop="id">
+      <ng-template
+        ngx-datatable-cell-template
+        let-rowIndex="rowIndex"
+        let-value="value"
+        let-row="row"
       >
-    </ngx-datatable>
-  </div>
+        <button
+          type="button"
+          class="btn btn-outline-success m-2"
+          (click)="openEditModal(editTemplate, value)"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          (click)="delete(value)"
+        >
+          Delete
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>
+
+<div>
+  <ng-template #editTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="formGroup" [formGroup]="editForm">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Email</label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Phone No</label>
+          <input
+            formControlName="phoneNo"
+            type="email"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+        Close
+      </button>
+    </div>
+  </ng-template>
+</div>

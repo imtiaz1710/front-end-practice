@@ -16,6 +16,9 @@ export class MyProfileService {
 
   getMyLastTeamId() 
   {
-    //  this.userTeamService.getUserTeamByUserId();
+     this.userTeamService.getUserTeamByUserId(this.getProfile().id).subscribe({
+      next: (res) => 
+        {return res[res.length-1]}
+     })
   } 
 }

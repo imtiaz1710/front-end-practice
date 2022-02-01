@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private toasterService : ToastrService
+    private toasterService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.http.get<any>('http://localhost:3000/singupUsers').subscribe({
+    this.http.get<any>('http://localhost:3000/users').subscribe({
       next: (res) => {
         const user = res.find(
           (x: any) =>
@@ -35,13 +35,12 @@ export class LoginComponent implements OnInit {
         );
 
         if (user) {
-          this.toasterService.success("Log in Success!")
+          this.toasterService.success('Log in Success!');
           this.loginForm.reset();
           localStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['/main/dashboard']);
-        } 
-        else {
-          this.toasterService.error("User not Found")
+        } else {
+          this.toasterService.error('User not Found');
         }
       },
 

@@ -24,21 +24,19 @@ export class UserInfoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.http
-      .get<any>(`http://localhost:3000/singupUsers/${this.userId}`)
-      .subscribe({
-        next: (res: any) => {
-          this.user = res;
-          // this.editForm.reset();
-          this.editForm = this.formBuilder.group({
-            name: [this.user.name],
-            phoneNo: [this.user.phoneNo],
-            designation: [this.user.designation],
-            address: [this.user.address],
-          });
-        },
-        error: (err: any) => this.toasterService.error('Error!'),
-      });
+    this.http.get<any>(`http://localhost:3000/users/${this.userId}`).subscribe({
+      next: (res: any) => {
+        this.user = res;
+        // this.editForm.reset();
+        this.editForm = this.formBuilder.group({
+          name: [this.user.name],
+          phoneNo: [this.user.phoneNo],
+          designation: [this.user.designation],
+          address: [this.user.address],
+        });
+      },
+      error: (err: any) => this.toasterService.error('Error!'),
+    });
   }
 
   onClick() {
@@ -52,7 +50,7 @@ export class UserInfoComponent implements OnInit {
     this.user.address = this.editForm.value.address;
 
     this.http
-      .put<any>(`http://localhost:3000/singupUsers/${this.user.id}`, this.user)
+      .put<any>(`http://localhost:3000/users/${this.user.id}`, this.user)
       .subscribe({
         next: (res: any) => {
           // this.user = res;

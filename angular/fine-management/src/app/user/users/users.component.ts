@@ -4,6 +4,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/services/user.service';
 import { User } from '../user';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MyProfileService } from 'src/app/services/my-profile.service';
+import { UserTeamService } from 'src/app/services/user-team.service';
+import { UserTeam } from 'src/app/models/user-team';
 
 @Component({
   selector: 'app-users',
@@ -19,7 +22,9 @@ export class UsersComponent implements OnInit {
     private http: HttpClient,
     private modalService: BsModalService,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private myProfileService: MyProfileService,
+    private userTeamService: UserTeamService
   ) {}
 
   rows = [];
@@ -32,13 +37,19 @@ export class UsersComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:3000/singupUsers').subscribe({
-      next: (data) => {
-        this.rows = data;
-      },
-      error: (err) => alert(err),
-    });
-
+    this.userTeamService
+      .getUserTeamByTeamId(this.myProfileService.getMyLastTeamId())
+      .subscribe({
+        next: (userTeam: UserTeam[]) => {
+          userTeam.forEach((element) => {
+            this.userService.getUserById(element.userId).subscribe({
+              next: (user: User) => this.rows.push(user),
+              error: (err) => console.log(err)
+            });
+          });
+        },
+        error: (err) => alert(err),
+      });
     this.buildForm();
   }
 
@@ -58,9 +69,9 @@ export class UsersComponent implements OnInit {
         this.editForm.get('name').patchValue(this.selectedUser.name);
         this.editForm.get('email').patchValue(this.selectedUser.email);
         this.editForm.get('phoneNo').patchValue(this.selectedUser.phoneNo);
-        this.editForm.get('team').patchValue(this.selectedUser.team);
+        this.editForm.get('team').patchValue(this.selectedUser.teamId);
       },
-      error: (err) => alert('Error!'),
+      error: (err) => console.log('Error!'),
     });
 
     this.modalRef = this.modalService.show(template);

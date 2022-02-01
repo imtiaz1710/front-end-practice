@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
 
   signUp() {
     this.http
-      .post<any>('http://localhost:3000/singupUsers', this.signupForm.value)
+      .post<any>('http://localhost:3000/users', this.signupForm.value)
       .subscribe({
         next: (res: any) => {
           this.toasterService.success('Sign up Successful!');

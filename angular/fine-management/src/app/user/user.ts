@@ -4,6 +4,5 @@ export interface User {
     phoneNo : string;
     email : string;
     designation : string;
-    team: string;
     address: string;
 }

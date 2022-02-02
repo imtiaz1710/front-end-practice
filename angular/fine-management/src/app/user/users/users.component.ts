@@ -1,4 +1,3 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/services/user.service';
@@ -16,8 +15,8 @@ import { Team } from 'src/app/models/team';
 })
 export class UsersComponent implements OnInit {
   modalRef: BsModalRef;
-  myTeams: Team[];
-  selectTeamForm : FormGroup;
+  myTeams: Team[] = [];
+  selectTeamForm: FormGroup;
 
   constructor(
     private modalService: BsModalService,
@@ -32,42 +31,59 @@ export class UsersComponent implements OnInit {
     { prop: 'name' },
     { prop: 'email' },
     { prop: 'phoneNo' },
-    { prop: 'team' },
     { prop: 'id' },
   ];
 
   ngOnInit(): void {
-    let teamsObservable = this.myProfileService.getMyTeams();
-    
-    teamsObservable.forEach((teamObs) => {
-      teamObs.subscribe({
-        next: (team) => {
-          this.myTeams.push(team);
-        },
-        error: (err) => console.log(err)
-      })
-    });
+    // let teamsObservable: Observable<Team>[] = this.myProfileService.getMyTeams();
+    // console.log(teamsObservable)
 
-    this.selectTeamForm = this.formBuilder.group(
-      {
-        teamId: ['']
-      }
-    )
+    // teamsObservable.forEach((teamObs) => {
+    //   teamObs.subscribe({
+    //     next: (team) => {
+    //       console.log(team)
+    //       this.myTeams.push(team);
+    //     },
+    //     error: (err) => console.log(err),
+    //   });
+    // });
+    this.myTeams = this.myProfileService.getMyTeams();
+
+    this.selectTeamForm = this.formBuilder.group({
+      teamId: [''],
+    });
   }
 
-  onSelect()
-  {
-    this.userTeamService.getUserTeamByTeamId(1).subscribe({
-      next: (userTeam: UserTeam[]) => {
-        userTeam.forEach((element) => {
-          this.userService.getUserById(element.userId).subscribe({
-            next: (user: User) => this.rows.push(user),
-            error: (err) => console.log(err),
+  onSelect() {
+    // this.rows = [];
+    this.userTeamService
+      .getUserTeamByTeamId(<number>this.selectTeamForm.value.teamId)
+      .subscribe({
+        next: (userTeam: UserTeam[]) => {
+          userTeam.forEach((element) => {
+            debugger;
+            this.userService.getUserById(element.userId).subscribe({
+              next: (user: User) => {
+                debugger;
+                this.rows.push(user);
+              },
+              error: (err) => console.log(err),
+            });
           });
-        });
-      },
-      error: (err) => console.log(err),
-    });
+          debugger;
+          this.rows = this.rows.map(
+            (x) =>
+              (x = {
+                name: x.name,
+                email: x.email,
+                phoneNo: x.phoneNo,
+                id: x.id,
+              })
+          );
+          
+        },
+        error: (err) => console.log(err),
+      });
   }
 
   delete(value) {}

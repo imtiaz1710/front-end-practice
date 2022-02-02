@@ -3,5 +3,4 @@ export interface UserTeam {
     userId: number;
     teamId: number;
     isActive: boolean;
-    isGuest: boolean;
 }

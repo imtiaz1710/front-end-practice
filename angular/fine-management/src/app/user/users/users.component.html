@@ -1,3 +1,31 @@
+<div>
+  <form
+    class="form-group mt-5"
+    style="margin-left: 180px; width: 30%"
+    [formGroup]="selectTeamForm"
+  >
+    <label class="mb-2" for="inlineFormCustomSelectPref">Select a Team :</label>
+    <select
+      class="form-control"
+      id="inlineFormCustomSelectPref"
+      formControlName="teamId"
+    >
+      <option *ngFor="let team of myTeams" [ngValue]="team.id">
+        {{ team.name }}
+      </option>
+    </select>
+    <div style="margin-bottom: 20px; margin-top: 10px">
+      <button
+        type="submit"
+        class="btn btn-primary my-1"
+        style="background-color: rgb(42, 193, 140)"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
 <div class="container mt-5">
   <ngx-datatable
     class="material p-4"
@@ -24,17 +52,10 @@
       >
         <button
           type="button"
-          class="btn btn-outline-success m-2"
-          (click)="openEditModal(editTemplate, value)"
-        >
-          Edit
-        </button>
-        <button
-          type="button"
           class="btn btn-outline-danger"
           (click)="delete(value)"
         >
-          Delete
+          Remove from Team
         </button>
       </ng-template>
     </ngx-datatable-column>
@@ -55,7 +76,7 @@
       </button>
     </div>
     <div class="modal-body">
-      <form class="formGroup" [formGroup]="editForm">
+      <form class="formGroup">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Name</label>
           <input

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { TEAMS } from '../../../teams';
-import { Team } from '../../../team';
+import { Team } from '../../models/team';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  public TEAMS: Team[] = TEAMS;
   public signupForm!: FormGroup;
 
   constructor(
@@ -27,8 +25,7 @@ export class SignupComponent implements OnInit {
     this.signupForm = this.formBuilder.group({
       email: [''],
       password: [''],
-      confirmPassword: [''],
-      team: [''],
+      confirmPassword: ['']
     });
   }
 

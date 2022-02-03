@@ -1,9 +1,21 @@
-<div>
+<div class="card mt-5">
+  <h4 class="card" style="margin:0 auto; margin-top: 2%; padding: 10px; color:rgb(111, 114, 117)">Add a User</h4>
   <form
-    class="form-group mt-5"
-    style="margin-left: 180px; width: 30%"
+    class="form-group"
+    style="margin-left: 4%; width: 30%"
     [formGroup]="selectTeamForm"
   >
+    <label class="mb-2" for="inlineFormCustomSelectPref">Select a Team :</label>
+    <select
+      class="form-control mb-2"
+      id="inlineFormCustomSelectPref"
+      formControlName="teamId"
+    >
+      <option *ngFor="let team of myTeams" [ngValue]="team.id">
+        {{ team.name }}
+      </option>
+    </select>
+    
     <label class="mb-2" for="inlineFormCustomSelectPref">Select a Team :</label>
     <select
       class="form-control"
@@ -14,6 +26,7 @@
         {{ team.name }}
       </option>
     </select>
+
     <div style="margin-bottom: 20px; margin-top: 10px">
       <button
         (click)="onSelect()"
@@ -27,7 +40,7 @@
   </form>
 </div>
 
-<div class="container mt-5">
+<div class="mt-5">
   <ngx-datatable
     class="material p-4"
     [rows]="rows"

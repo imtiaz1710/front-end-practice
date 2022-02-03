@@ -19,18 +19,66 @@
       "designation": "Trainee Software Engineer",
       "phoneNo": "03372726763",
       "address": "62,shilmon,Tongi,Gazipur"
+    },
+    {
+      "email": "imtiaz@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 3
     }
   ],
   "teams": [
-    {"id": 1, "name": "Phantom"},
-    { "id": 2, "name": "ODC" },
-    { "id": 3, "name": "Artisan" },
-    { "id": 4, "name": "Optimus" },
-    { "id": 5, "name": "Mobile" }
+    {
+      "id": 1,
+      "name": "Phantom"
+    },
+    {
+      "id": 2,
+      "name": "ODC"
+    },
+    {
+      "id": 3,
+      "name": "Artisan"
+    },
+    {
+      "id": 4,
+      "name": "Optimus"
+    },
+    {
+      "id": 5,
+      "name": "Mobile"
+    }
   ],
   "userTeam": [
-    {"id": 1, "userId": 1, "teamId": 1, "isActive" : true},
-    { "id": 1, "userId": 2, "teamId": 1, "isActive": true },
-    { "id": 1, "userId": 1, "teamId": 2, "isActive": true }
+    {
+      "id": 1,
+      "userId": 1,
+      "teamId": 1,
+      "isActive": true
+    },
+    {
+      "id": 1,
+      "userId": 2,
+      "teamId": 1,
+      "isActive": true
+    },
+    {
+      "id": 1,
+      "userId": 1,
+      "teamId": 2,
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "teamId": 2,
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "teamId": 2,
+      "isActive": true
+    }
   ]
 }

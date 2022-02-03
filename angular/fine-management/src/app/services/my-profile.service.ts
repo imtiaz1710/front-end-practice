@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Team } from '../models/team';
 import { UserTeam } from '../models/user-team';
 import { User } from '../user/user';
@@ -19,42 +18,60 @@ export class MyProfileService {
     return JSON.parse(localStorage.getItem('user'));
   }
 
-  getMyTeams(): Team[] {
-    let teamsOfUser = <Team[]>[];
+  // async getMyTeams() : Promise<Team[]>
+  // {
+  //   let myTeams: Team[];
+  //   await this.getMyTeamsPromise().then((teams) => {myTeams = teams});
+  //   return myTeams;
+  // }
 
-    this.userTeamService.getUserTeamByUserId(this.getProfile().id).subscribe({
-      next: (userTeams) => {
-        let activeUserTeams = userTeams.filter((u) => u.isActive == true);
+  public getMyTeamsPromise() : Promise<Team[]> {
+    // this.userTeamService.getUserTeamByUserId(this.getProfile().id).subscribe({
+    //   next: (userTeams) => {
+    //     let activeUserTeams = userTeams.filter((u) => u.isActive == true);
 
-        activeUserTeams.map((x) => {
-          this.teamService.getTeamById(x.teamId).subscribe((team) => {
-            teamsOfUser.push(team);
-          });
-        });
-      },
-      error: (err) => console.log(err),
-    });
-    
-    return teamsOfUser;
-
-    // let teams: Observable<Team>[];
-
-    // this.userTeamService
-    //   .getUserTeamByUserId(this.getProfile().id)
-    //   .subscribe({
-    //     next: (userTeams) => {
-    //     console.log("Imtiaz: ",userTeams)
-    //       userTeams.forEach((userTeam) => {
-    //         if (userTeam.isActive) {
-    //           teams.push(
-    //             this.teamService.getTeamById(userTeam.teamId)
-    //           );
-    //         }
+    //     activeUserTeams.map((x) => {
+    //       this.teamService.getTeamById(x.teamId).subscribe((team) => {
+    //         teams.push(team);
     //       });
-    //     },
-    //   });
+    //     });
+    //   },
+    //   error: (err) => console.log(err),
+    // });
+    
+    return new Promise((resolve, reject) => {
+        let getTeamByIdpromises = [];
+        this.getActiveUserTeamByUserIdPromise(this.getProfile().id).then(
+          (userTeams: UserTeam[]) => {
+            userTeams.forEach((userTeam) => {
+              getTeamByIdpromises.push(
+                this.getTeamByIdPromise(userTeam.teamId)
+              );
+            });
+            Promise.all(getTeamByIdpromises).then((teams: Team[]) => resolve(teams), (err) => reject(err));
+          }
+        );
+    })
+  }
 
-    // console.log(teams);
-    // return teams;
+  private getActiveUserTeamByUserIdPromise(userId : number)
+  {
+    return new Promise((resolve, reject) => {
+      this.userTeamService.getUserTeamByUserId(userId)
+        .subscribe({
+          next: (userTeams) => resolve(userTeams.filter(x => x.isActive)),
+          error: (err) => reject(err)
+        })
+    })
+  }
+
+  private getTeamByIdPromise(teamId: number)
+  {
+    return new Promise((resolve, reject) => {
+      this.teamService.getTeamById(teamId).subscribe({
+        next: (team) => resolve(team),
+        error: (err) => reject(err)
+      })
+    })
   }
 }

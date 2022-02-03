@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MyProfileService } from 'src/app/services/my-profile.service';
 import { UserTeamService } from 'src/app/services/user-team.service';
 import { Team } from 'src/app/models/team';
+import { UserTeam } from 'src/app/models/user-team';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,7 @@ export class UsersComponent implements OnInit {
     private userTeamService: UserTeamService
   ) {}
 
-  rows = [];;
+  rows = [];
 
   ngOnInit(): void {
     this.myProfileService.getMyTeamsPromise().then((teams) => {
@@ -46,7 +47,7 @@ export class UsersComponent implements OnInit {
 
       promise1.then((userTeams) => {
         userTeams.forEach((userTeam) => {
-          promises.push(this.getUserByUserTeam(userTeam.userId));
+          promises.push(this.getUserByUserTeam(userTeam));
         });
 
         Promise.all(promises).then((user) => {
@@ -58,7 +59,7 @@ export class UsersComponent implements OnInit {
                 name: x.name,
                 email: x.email,
                 phoneNo: x.phoneNo,
-                team: x.team,
+                team: x.teamId,
                 id: x.id,
               })
           );
@@ -67,11 +68,13 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  getUserByUserTeam(userId: number) {
+  getUserByUserTeam(userTeam: UserTeam) {
     return new Promise((resolve, reject) => {
-      this.userService.getUserById(userId).subscribe({
+      this.userService.getUserById(userTeam.userId).subscribe({
         next: (result) => {
-          resolve(result);
+          let modifiedResult = <any>result;
+          modifiedResult.teamId = userTeam.teamId;
+          resolve(modifiedResult);
         },
         error: (err) => reject(err),
       });

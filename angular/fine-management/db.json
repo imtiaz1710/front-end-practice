@@ -12,8 +12,8 @@
     },
     {
       "email": "tn@gmail.com",
-      "password": "abc",
-      "confirmPassword": "abc",
+      "password": "123",
+      "confirmPassword": "123",
       "id": 2,
       "name": "TN",
       "designation": "Trainee Software Engineer",
@@ -28,6 +28,16 @@
       "name": "Istiak",
       "designation": "Associate Software Engineer",
       "phoneNo": "124512332",
+      "address": "62,shilmon,Tongi,Gazipur"
+    },
+    {
+      "email": "abc@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 4,
+      "name": "IZM",
+      "designation": "Associate Software Engineer",
+      "phoneNo": "43564521237656",
       "address": "62,shilmon,Tongi,Gazipur"
     }
   ],
@@ -61,28 +71,34 @@
       "isActive": true
     },
     {
-      "id": 1,
+      "id": 2,
       "userId": 2,
       "teamId": 1,
       "isActive": true
     },
     {
-      "id": 1,
+      "id": 3,
       "userId": 1,
       "teamId": 2,
       "isActive": true
     },
     {
-      "id": 2,
+      "id": 4,
       "userId": 2,
+      "teamId": 2,
+      "isActive": false
+    },
+    {
+      "id": 5,
+      "userId": 3,
       "teamId": 2,
       "isActive": true
     },
     {
-      "id": 3,
-      "userId": 3,
+      "userId": 4,
       "teamId": 2,
-      "isActive": true
+      "isActive": true,
+      "id": 6
     }
   ]
 }

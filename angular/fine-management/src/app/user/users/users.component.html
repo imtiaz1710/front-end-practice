@@ -56,7 +56,7 @@
     <ngx-datatable-column name="Phone No" prop="phoneNo">
     </ngx-datatable-column>
     <ngx-datatable-column name="Team Name" prop="teamName"> </ngx-datatable-column>
-    <ngx-datatable-column name="Action" prop="id">
+    <ngx-datatable-column name="Action" prop="userTeamId">
       <ng-template
         ngx-datatable-cell-template
         let-rowIndex="rowIndex"
@@ -66,7 +66,7 @@
         <button
           type="button"
           class="btn btn-outline-danger"
-          (click)="delete(value)"
+          (click)="openDeleteUserModal(DeleteUserModalTemplate, value)"
         >
           Remove from Team
         </button>
@@ -83,10 +83,28 @@
       </button>
    </div>
    <div class="modal-body">
-      Are You Sure You Want to Add the Selected User ot Your Team?
+      Are You Sure You Want to Add the Selected User to Your Team?
    </div>
    <div class="modal-footer justify-content-between">
-      <button type="button" class="btn btn-success" (click)="onAdd();modalRef.hide()">Add</button>
+      <button type="button" class="btn btn-success" (click)="modalRef.hide();onAdd();">Add</button>
       <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
    </div>
 </ng-template>
+
+<ng-template #DeleteUserModalTemplate>
+   <div class="modal-header">
+      <h4 class="modal-title pull-left">Remove User</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+         <span aria-hidden="true">×</span>
+      </button>
+   </div>
+   <div class="modal-body">
+      Are You Sure You Want to Remove Selected User from Your Team?
+   </div>
+   <div class="modal-footer justify-content-between">
+      <button type="button" class="btn btn-danger" (click)="modalRef.hide();onDelete(modalRef.content);">Remove</button>
+      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+   </div>
+</ng-template>
+
+

@@ -1,13 +1,19 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/services/user.service';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators,
+} from '@angular/forms';
 import { MyProfileService } from 'src/app/services/my-profile.service';
 import { UserTeamService } from 'src/app/services/user-team.service';
 import { Team } from 'src/app/models/team';
 import { UserTeam } from 'src/app/models/user-team';
 import { TeamService } from 'src/app/services/team.service';
 import { User } from '../user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-users',
@@ -21,6 +27,7 @@ export class UsersComponent implements OnInit {
   teams: Team[] = [];
   users: User[] = [];
   userTeams: UserTeam[] = [];
+  rows = [];
 
   constructor(
     private modalService: BsModalService,
@@ -28,12 +35,12 @@ export class UsersComponent implements OnInit {
     private formBuilder: FormBuilder,
     private myProfileService: MyProfileService,
     private userTeamService: UserTeamService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private toastrService: ToastrService
   ) {}
 
-  rows = [];
-
   ngOnInit(): void {
+    this.rows = [];
     let usersPromise = this.userService.getAllUsersPromise();
     let teamsPromise = this.teamService.getAllTeamsPromise();
     let userTeamPromise = this.userTeamService.getAllUserTeamsPromise();
@@ -58,36 +65,87 @@ export class UsersComponent implements OnInit {
           let user = this.users.filter((u) => u.id == userTeamMate.userId)[0];
           let team = this.teams.filter((t) => t.id == userTeamMate.teamId)[0];
 
-          let userTeam = { ...user, teamName: team.name };
+          let userTeam = {
+            ...user,
+            teamName: team.name,
+            userTeamId: userTeamMate.id,
+          };
           this.rows.push(userTeam);
         });
       });
 
       this.rows = this.rows.map(
-        (r) =>
-          (r = {
-            name: r.name,
-            email: r.email,
-            phoneNo: r.phoneNo,
-            teamName: r.teamName,
-            id: r.id,
+        (row) =>
+          (row = {
+            name: row.name,
+            email: row.email,
+            phoneNo: row.phoneNo,
+            teamName: row.teamName,
+            userTeamId: row.userTeamId,
           })
       );
     });
 
     this.addToTeamForm = this.formBuilder.group({
-      userId: [''],
-      teamId: ['']
+      userId: ['', Validators.required],
+      teamId: ['', Validators.required],
     });
   }
 
   onAdd() {
-    
+    let filteredUserTeam = this.userTeams.find(
+      (ut) =>
+        ut.teamId == this.addToTeamForm.value.teamId &&
+        ut.userId == this.addToTeamForm.value.userId
+    );
+
+    if (filteredUserTeam) {
+      if (filteredUserTeam.isActive)
+        this.toastrService.error('User already exists in the selected team');
+      else {
+        this.changeStatusOfUserTeam(filteredUserTeam, true);
+      }
+    } else {
+      let userTeam: UserTeam = {
+        ...this.addToTeamForm.value,
+        isActive: true,
+      };
+
+      this.userTeamService.addUserTeam(userTeam).subscribe({
+        next: (res) => {
+          this.toastrService.success('Member successfully added to a team!');
+          window.location.reload();
+        },
+        error: (err) => this.toastrService.error('Failed to add user!'),
+      });
+    }
   }
 
   openAddUserModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    if (this.addToTeamForm.valid)
+      this.modalRef = this.modalService.show(template);
+    else this.toastrService.error('invalid operation!');
   }
 
-  delete(value) {}
+  openDeleteUserModal(template: TemplateRef<any>, userTeamId: number) {
+    this.modalRef = this.modalService.show(template);
+    this.modalRef.content = userTeamId;
+  }
+
+  onDelete(value) {
+    let userTeam = this.userTeams.filter((ut) => ut.id == value)[0];
+    this.changeStatusOfUserTeam(userTeam, false);
+  }
+
+  changeStatusOfUserTeam(userTeam: UserTeam, status: boolean) {
+    userTeam.isActive = status;
+
+    this.userTeamService.updateUserTeam(userTeam).subscribe({
+      next: (res) => {
+        this.toastrService.success('Done!');
+        window.location.reload();
+      },
+      error: (err) => this.toastrService.error('Operation Failed!'),
+    });
+  }
 }

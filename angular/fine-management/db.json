@@ -24,7 +24,11 @@
       "email": "imtiaz@gmail.com",
       "password": "123",
       "confirmPassword": "123",
-      "id": 3
+      "id": 3,
+      "name": "Istiak",
+      "designation": "Associate Software Engineer",
+      "phoneNo": "124512332",
+      "address": "62,shilmon,Tongi,Gazipur"
     }
   ],
   "teams": [
@@ -49,7 +53,7 @@
       "name": "Mobile"
     }
   ],
-  "userTeam": [
+  "userTeams": [
     {
       "id": 1,
       "userId": 1,

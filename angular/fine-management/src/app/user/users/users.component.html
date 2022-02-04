@@ -1,19 +1,19 @@
 <div class="card mt-5">
-  <h4 class="card" style="margin:0 auto; margin-top: 2%; padding: 10px; color:rgb(111, 114, 117)">Add a User</h4>
+  <h4 class="card" style="margin: auto; margin-top: 2%; padding: 10px; color:rgb(111, 114, 117)">Add a User</h4>
   <form
     class="form-group"
     style="margin-left: 4%; width: 30%"
-    [formGroup]="selectTeamForm"
+    [formGroup]="addToTeamForm"
   >
-    <label class="mb-2" for="inlineFormCustomSelectPref">Select a Team :</label>
+    <label class="mb-2" for="inlineFormCustomSelectPref">Select a User :</label>
     <select
       class="form-control mb-2"
       id="inlineFormCustomSelectPref"
-      formControlName="teamId"
+      formControlName="userId"
     >
-      <option *ngFor="let team of myTeams" [ngValue]="team.id">
-        {{ team.name }}
-      </option>
+      <option *ngFor="let user of users" [ngValue]="user.id">
+      &#160; Email : {{user.email}}  &#160; Name : {{user.name}}
+      </option> 
     </select>
     
     <label class="mb-2" for="inlineFormCustomSelectPref">Select a Team :</label>
@@ -29,7 +29,7 @@
 
     <div style="margin-bottom: 20px; margin-top: 10px">
       <button
-        (click)="onSelect()"
+        (click)="openAddUserModal(AddUserModalTemplate)"
         type="submit"
         class="btn btn-primary my-1"
         style="background-color: rgb(42, 193, 140)"
@@ -55,7 +55,7 @@
     <ngx-datatable-column name="Email" prop="email"> </ngx-datatable-column>
     <ngx-datatable-column name="Phone No" prop="phoneNo">
     </ngx-datatable-column>
-    <ngx-datatable-column name="Team Name" prop="team"> </ngx-datatable-column>
+    <ngx-datatable-column name="Team Name" prop="teamName"> </ngx-datatable-column>
     <ngx-datatable-column name="Action" prop="id">
       <ng-template
         ngx-datatable-cell-template
@@ -75,56 +75,18 @@
   </ngx-datatable>
 </div>
 
-<div>
-  <ng-template #editTemplate>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Modal</h4>
-      <button
-        type="button"
-        class="close pull-right"
-        aria-label="Close"
-        (click)="modalRef.hide()"
-      >
-        <span aria-hidden="true">×</span>
+<ng-template #AddUserModalTemplate>
+   <div class="modal-header">
+      <h4 class="modal-title pull-left">Add User</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+         <span aria-hidden="true">×</span>
       </button>
-    </div>
-    <div class="modal-body">
-      <form class="formGroup">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Name</label>
-          <input
-            formControlName="name"
-            type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Email</label>
-          <input
-            formControlName="email"
-            type="email"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Phone No</label>
-          <input
-            formControlName="phoneNo"
-            type="email"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">
-        Close
-      </button>
-    </div>
-  </ng-template>
-</div>
+   </div>
+   <div class="modal-body">
+      Are You Sure You Want to Add the Selected User ot Your Team?
+   </div>
+   <div class="modal-footer justify-content-between">
+      <button type="button" class="btn btn-success" (click)="onAdd();modalRef.hide()">Add</button>
+      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+   </div>
+</ng-template>

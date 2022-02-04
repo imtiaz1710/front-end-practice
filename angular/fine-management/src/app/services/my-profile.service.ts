@@ -26,19 +26,7 @@ export class MyProfileService {
   // }
 
   public getMyTeamsPromise() : Promise<Team[]> {
-    // this.userTeamService.getUserTeamByUserId(this.getProfile().id).subscribe({
-    //   next: (userTeams) => {
-    //     let activeUserTeams = userTeams.filter((u) => u.isActive == true);
 
-    //     activeUserTeams.map((x) => {
-    //       this.teamService.getTeamById(x.teamId).subscribe((team) => {
-    //         teams.push(team);
-    //       });
-    //     });
-    //   },
-    //   error: (err) => console.log(err),
-    // });
-    
     return new Promise((resolve, reject) => {
         let getTeamByIdpromises = [];
         this.getActiveUserTeamByUserIdPromise(this.getProfile().id).then(

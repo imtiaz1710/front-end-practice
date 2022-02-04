@@ -11,13 +11,22 @@ export class UserTeamService {
 
   getUserTeamByTeamId(teamId: number): Observable<UserTeam[]> {
     return this.http.get<UserTeam[]>(
-      `http://localhost:3000/userTeam?teamId=${teamId}`
+      `http://localhost:3000/userTeams?teamId=${teamId}`
     );
   }
 
   getUserTeamByUserId(userId: number): Observable<UserTeam[]> {
     return this.http.get<UserTeam[]>(
-      `http://localhost:3000/userTeam?userId=${userId}`
+      `http://localhost:3000/userTeams?userId=${userId}`
     );
+  }
+
+  getAllUserTeamsPromise(): Promise<UserTeam[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get(`http://localhost:3000/userTeams`).subscribe({
+        next: (userTeams: UserTeam[]) => resolve(userTeams),
+        error: (err) => reject(err),
+      });
+    });
   }
 }

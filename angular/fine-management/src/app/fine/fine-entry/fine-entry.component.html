@@ -1,6 +1,14 @@
 <div class="body card container" style="padding: 3%; font-size: 20px; margin-top: 15px">
-  <h1 style="margin: 0 auto; " class="mb-4">Add Fine</h1>
+  <h1 style="margin: 0 auto; color:rgb(120, 120, 120)" class="mb-4">Add Fine</h1>
   <form class="form-group" style="width: 50%; margin: 0 auto;">
+    <label for="name">Select a Team :</label>
+    <select class="form-control mb-3" id="name">
+      <option selected>Choose...</option>
+      <option value="1">Imtiaz</option>
+      <option value="2">Zahid vai</option>
+      <option value="3">Mehedi</option>
+    </select>
+
     <label for="name">Name :</label>
     <select class="form-control mb-3" id="name">
       <option selected>Choose...</option>
@@ -18,6 +26,16 @@
     </select>
 
     <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
+      >Fine Amount :</label
+    >
+    <input
+      type="number"
+      class="form-control mb-3"
+      id="formGroupExampleInput"
+      placeholder="Fine Amount"
+    />
+
+    <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
       >Date Time :</label
     >
     <input
@@ -28,14 +46,15 @@
     />
 
     <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
-      >Fine Amount :</label
+      >Note :</label
     >
-    <input
-      type="number"
-      class="form-control"
+    <textarea
+      type="text"
+      class="form-control mb-3"
       id="formGroupExampleInput"
-      placeholder="Fine Amount"
-    />
+      placeholder="write a note here..."
+    ></textarea>
+
     <div style="margin-top: 30px">
       <button
         type="submit"

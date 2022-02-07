@@ -17,7 +17,11 @@ export class UserService {
     return this.http.get<User>(`http://localhost:3000/users/${id}`);
   }
 
-  async getAllUsers() {
+  async getAllUsersAsync() {
+    return this.http.get<User[]>('http://localhost:3000/users');
+  }
+
+  getAllUsers() {
     return this.http.get<User[]>('http://localhost:3000/users');
   }
 

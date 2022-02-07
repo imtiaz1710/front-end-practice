@@ -1,43 +1,23 @@
 {
   "users": [
     {
-      "email": "imtiaz.mehedi.iubat@gmail.com",
+      "email": "akhter@gmail.com",
       "password": "123",
       "confirmPassword": "123",
       "id": 1,
-      "name": "Imtiaz Mehedi",
-      "designation": "Trainee Software Engineer",
-      "phoneNo": "01521435113",
+      "name": "Akhter",
+      "designation": "Associate Software Engineer",
+      "phoneNo": "3244343243434",
       "address": "62,shilmon,Tongi,Gazipur"
     },
     {
-      "email": "tn@gmail.com",
+      "email": "imtiaz.mehedi.iubat@gmail.com",
       "password": "123",
       "confirmPassword": "123",
       "id": 2,
-      "name": "TN",
-      "designation": "Trainee Software Engineer",
-      "phoneNo": "03372726763",
-      "address": "62,shilmon,Tongi,Gazipur"
-    },
-    {
-      "email": "imtiaz@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "id": 3,
-      "name": "Istiak",
-      "designation": "Associate Software Engineer",
-      "phoneNo": "124512332",
-      "address": "62,shilmon,Tongi,Gazipur"
-    },
-    {
-      "email": "abc@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
-      "id": 4,
-      "name": "IZM",
-      "designation": "Associate Software Engineer",
-      "phoneNo": "43564521237656",
+      "name": "Imtiaz",
+      "designation": "Trainee Software Eng",
+      "phoneNo": "01521435113",
       "address": "62,shilmon,Tongi,Gazipur"
     }
   ],
@@ -71,34 +51,20 @@
       "isActive": true
     },
     {
-      "id": 2,
       "userId": 2,
       "teamId": 1,
-      "isActive": true
-    },
-    {
-      "id": 3,
-      "userId": 1,
-      "teamId": 2,
-      "isActive": true
-    },
-    {
-      "id": 4,
-      "userId": 2,
-      "teamId": 2,
-      "isActive": false
-    },
-    {
-      "id": 5,
-      "userId": 3,
-      "teamId": 2,
-      "isActive": true
-    },
-    {
-      "userId": 4,
-      "teamId": 2,
       "isActive": true,
-      "id": 6
+      "id": 2
+    }
+  ],
+  "fines": [
+    {
+      "userTeamId": 2,
+      "fineType": "teamMeeting",
+      "fineAmount": 1000,
+      "dateTime": "2022-02-07",
+      "note": "late in team meeting", 
+      "id": 1
     }
   ]
 }

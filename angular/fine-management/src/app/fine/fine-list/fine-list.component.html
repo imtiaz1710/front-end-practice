@@ -10,74 +10,29 @@
     [scrollbarH]="true"
     [columnMode]="'force'"
   >
+    <ngx-datatable-column name="Name" prop="name"> </ngx-datatable-column>
+    <ngx-datatable-column name="Actions" prop="name">
+      <ng-template
+        ngx-datatable-cell-template
+        let-rowIndex="rowIndex"
+        let-value="value"
+        let-row="row"
+      >
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          (click)="edit(value)"
+        >
+          Success {{ rowIndex }}
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          (click)="delete(value)"
+        >
+          Danger
+        </button>
+      </ng-template>
+    </ngx-datatable-column>
   </ngx-datatable>
 </div>
-
-<!-- <div class="body card" style="padding: 3%; font-size: 20px; margin-top: 15px">
-  <table class="table">
-    <thead>
-      <tr>
-        <th style="font-size: 20px" scope="col">#</th>
-        <th style="font-size: 20px" scope="col">Fine Type</th>
-        <th style="font-size: 20px" scope="col">Date Time</th>
-        <th style="font-size: 20px" scope="col">Amount</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Late in Scrum</td>
-        <td>12/12/12</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Late in Scrum</td>
-        <td>12/12/12</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Late in Meeting</td>
-        <td>11/11/11</td>
-        <td>1000</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Late in Scrum</td>
-        <td>12/12/12</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Late in Scrum</td>
-        <td>12/12/12</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Late in Meeting</td>
-        <td>11/11/11</td>
-        <td>1000</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Late in Scrum</td>
-        <td>12/12/12</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Late in Scrum</td>
-        <td>12/12/12</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Late in Meeting</td>
-        <td>11/11/11</td>
-        <td>1000</td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->

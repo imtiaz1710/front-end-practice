@@ -31,6 +31,13 @@ export class UserTeamService {
     });
   }
 
+  getAllUserTeams()
+  {
+    return this.http.get<UserTeam[]>(
+      `http://localhost:3000/userTeams`
+    );
+  }
+
   addUserTeam(userTeam: UserTeam)
   {
     return this.http.post(`http://localhost:3000/userTeams`, userTeam);

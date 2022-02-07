@@ -35,13 +35,18 @@ export class FineListComponent implements OnInit {
       fineType: 'Team Meeting',
       amount: 200,
       dateTime: '5/2/3',
-    },
+    }
   ];
-  
+
   columns = [
     { prop: 'name' },
     { prop: 'fineType' },
     { name: 'Amount' },
     { name: 'DateTime' },
+    { name: 'Actions', prop: 'Id' }
   ];
+
+  edit(value) {}
+
+  delete(value) {}
 }

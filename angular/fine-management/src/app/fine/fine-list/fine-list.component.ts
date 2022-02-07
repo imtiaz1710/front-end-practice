@@ -95,14 +95,11 @@ export class FineListComponent implements OnInit {
     });
   }
 
-  onEdit(fine) {
-
+  onEdit(template: TemplateRef<any>, fineId: number) {
   }
 
   Delete(value) {}
 
-  openEditFineModal(template: TemplateRef<any>, fineId: number) {
-    this.modalRef = this.modalService.show(template);
-    this.modalRef.content = this.fines.filter(f => f.id == fineId)[0];
+  openEditFineModal(template: TemplateRef<any>) {
   }
 }

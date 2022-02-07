@@ -7,7 +7,7 @@ import { FineEntryComponent } from './fine-entry/fine-entry.component';
 import { FineListComponent } from './fine-list/fine-list.component';
 import { ReportComponent } from './report/report.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     NgxDatatableModule,
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class FineModule { }

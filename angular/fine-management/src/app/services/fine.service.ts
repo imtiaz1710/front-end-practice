@@ -4,16 +4,18 @@ import { Observable } from 'rxjs';
 import { Fine } from '../models/fine';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FineService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  addFine(fine: Fine) : Observable<Fine>
-  {
+  addFine(fine: Fine): Observable<Fine> {
     return <Observable<Fine>>(
       this.http.post(`http://localhost:3000/fines`, fine)
     );
+  }
+
+  getAllFines(): Observable<Fine[]> {
+    return <Observable<Fine[]>>this.http.get(`http://localhost:3000/fines`);
   }
 }

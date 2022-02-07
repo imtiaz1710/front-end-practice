@@ -46,6 +46,7 @@
               style="color: rgb(112, 112, 113)"
             ></i>
           </button>
+          <div style="margin-left: 1100px">{{ myProfile.email }}</div>
           <div class="dropdown">
             <a
               style="font-size: 30px; margin-right: 100px"
@@ -55,8 +56,10 @@
               aria-expanded="false"
             >
             </a>
-            <ul class="dropdown-menu"  aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" routerLink="/main/user">My Profile</a></li>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" routerLink="/main/user">My Profile</a>
+              </li>
               <li><a class="dropdown-item" routerLink="/logout">LogOut</a></li>
             </ul>
           </div>

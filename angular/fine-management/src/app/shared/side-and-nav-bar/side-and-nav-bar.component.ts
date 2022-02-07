@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MyProfileService } from 'src/app/services/my-profile.service';
+import { User } from 'src/app/user/user';
 import { AccessChecker } from '../access-checker';
 
 
@@ -8,9 +10,13 @@ import { AccessChecker } from '../access-checker';
   styleUrls: ['./side-and-nav-bar.component.scss'],
 })
 export class SideAndNavBarComponent implements OnInit {
-  constructor(private accessChecker : AccessChecker) {}
+  myProfile: User;
+
+  constructor(private accessChecker : AccessChecker, private myProfileService: MyProfileService) {}
 
   ngOnInit(): void {
+    this.myProfile = this.myProfileService.getProfile();
+    
     this.accessChecker.preventUnauthorizedAccess();
   }
 

@@ -1,5 +1,5 @@
 export interface Fine {
-    Id: number;
+    id: number;
     userTeamId: number;
     fineType: string;
     fineAmount: number;

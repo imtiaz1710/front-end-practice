@@ -3,6 +3,6 @@ export interface Fine {
     userTeamId: number;
     fineType: string;
     fineAmount: number;
-    dateTime: Date;
+    date: Date;
     note: string;
 }

@@ -1,13 +1,6 @@
 <div class="container mt-5">
-  <ngx-datatable
-    class="material p-4"
-    [rows]="rows"
-    [headerHeight]="50"
-    [rowHeight]="80"
-    [footerHeight]="50"
-    [scrollbarV]="true"
-    [scrollbarH]="true"
-  >
+  <ngx-datatable class="material p-4" [rows]="rows" [headerHeight]="50" [rowHeight]="80" [footerHeight]="50"
+    [scrollbarV]="true" [scrollbarH]="true">
     <ngx-datatable-column name="Name" prop="name"> </ngx-datatable-column>
     <ngx-datatable-column name="Team Name" prop="teamName">
     </ngx-datatable-column>
@@ -19,26 +12,13 @@
     <ngx-datatable-column [minWidth]="200" name="Note" prop="note"> </ngx-datatable-column>
 
     <ngx-datatable-column [minWidth]="200" name="Actions" prop="id">
-      <ng-template
-        ngx-datatable-cell-template
-        let-rowIndex="rowIndex"
-        let-value="value"
-        let-row="row"
-      >
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
         <div>
-          <button
-            style="margin-right: 4%;"
-            type="button"
-            class="btn btn-outline-success"
-            (click)="onEdit(EditFineModalTemplate, value)"
-          >
+          <button style="margin-right: 4%;" type="button" class="btn btn-outline-success"
+            (click)="openEditFineModal(EditFineModalTemplate, value)">
             Edit
           </button>
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            (click)="Delete(value)"
-          >
+          <button type="button" class="btn btn-outline-danger" (click)="Delete(value)">
             Delete
           </button>
         </div>
@@ -48,52 +28,40 @@
 </div>
 
 <ng-template #EditFineModalTemplate>
-   <div class="modal-header">
-      <h4 class="modal-title pull-left">Edit User</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-         <span aria-hidden="true">×</span>
-      </button>
-   </div>
-   <div class="modal-body">
-      <form>
-          <div class="row mt-3">
-            <div class="col-md-12">
-              <label class="labels">Name</label
-              ><input
-                type="text"
-                class="form-control"
-                name="modalRef.content.name"
-              />
-            </div>
-            <div class="col-md-12">
-              <label class="labels">Mobile Number</label
-              ><input
-                type="text"
-                class="form-control"
-                placeholder="enter phone number"
-              />
-            </div>
-            <div class="col-md-12">
-              <label class="labels">Designation</label
-              ><input
-                type="text"
-                class="form-control"
-                placeholder="enter your Designation"
-              />
-            </div>
-            <div class="col-md-12">
-              <label class="labels">Address</label
-              ><input
-                type="text"
-                class="form-control"
-                [(ngModel)]="modalRef.content.name"
-              />
-            </div>
-          </div>
-        </form>
-   </div>
-   <div class="modal-footer justify-content-between">
-      <button type="button" class="btn btn-success" (click)="modalRef.hide();">Save</button>
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
-   </div>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit User</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editFineForm">
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <label class="labels">Name</label><input [disabled]=true type="text" class="form-control"
+            formControlName="name" />
+        </div>
+        <div class="col-md-12">
+          <label class="labels">Team Name</label><input formControlName="teamName" type="text" class="form-control"
+            placeholder="enter phone number" />
+        </div>
+        <div class="col-md-12">
+          <label class="labels" for="fineType">Fine Type</label>
+          <input formControlName="fineType" type="text"
+          class="form-control"/>
+        </div>
+        <div class="col-md-12">
+          <label class="labels">Fine Amount</label><input formControlName="fineAmount" type="text"
+            class="form-control" />
+        </div>
+        <div class="col-md-12">
+          <label class="labels">Date</label><input formControlName="date" type="date" class="form-control" />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-success" (click)="modalRef.hide();edit()">Save</button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
+  </div>
 </ng-template>

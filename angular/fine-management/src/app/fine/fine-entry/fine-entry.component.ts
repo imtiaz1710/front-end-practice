@@ -44,7 +44,7 @@ export class FineEntryComponent implements OnInit {
       userId: [''],
       fineType: [''],
       fineAmount: [''],
-      dateTime: [''],
+      date: [''],
       note: [''],
     });
 
@@ -94,7 +94,7 @@ export class FineEntryComponent implements OnInit {
       userTeamId: userTeam.id,
       fineType: formValue.fineType,
       fineAmount: formValue.fineAmount,
-      dateTime: <Date>formValue.dateTime,
+      date: <Date>formValue.date,
       note: formValue.note,
     };
 

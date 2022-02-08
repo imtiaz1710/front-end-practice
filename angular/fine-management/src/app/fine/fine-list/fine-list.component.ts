@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Fine } from 'src/app/models/fine';
@@ -10,6 +11,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { UserTeamService } from 'src/app/services/user-team.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/user/user';
+import {FineTypes} from '../../enums/fine-types';
 
 @Component({
   selector: 'app-fine-list',
@@ -25,6 +27,9 @@ export class FineListComponent implements OnInit {
   fines: Fine[];
   filteredFineList: Fine[];
   rows = [];
+  editFineForm: FormGroup;
+  fineTypes: FineTypes;
+  keys = Object.keys;
 
   constructor(
     private teamService: TeamService,
@@ -34,7 +39,7 @@ export class FineListComponent implements OnInit {
     private myProfileService: MyProfileService,
     private fineService: FineService,
     private modalService: BsModalService
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.filteredFineList = [];
@@ -77,7 +82,7 @@ export class FineListComponent implements OnInit {
         teamName: team.name,
         fineType: fl.fineType,
         fineAmount: fl.fineAmount,
-        date: fl.dateTime,
+        date: fl.date,
         note: fl.note,
         id: fl.id,
       };
@@ -95,11 +100,29 @@ export class FineListComponent implements OnInit {
     });
   }
 
-  onEdit(template: TemplateRef<any>, fineId: number) {
+  edit() {
+    this.fineService.updateFine(this.editFineForm.value);
   }
 
-  Delete(value) {}
+  Delete(value) { 
+    
+  }
 
-  openEditFineModal(template: TemplateRef<any>) {
+  openEditFineModal(template: TemplateRef<any>, fineId: number) {
+    let fine = this.fines.filter(f => f.id == fineId)[0];
+    let userTeam = this.userTeams.filter(ut => ut.id == fine.userTeamId)[0];
+    let user = this.users.filter(u => u.id == userTeam.userId)[0];
+    let team = this.teams.filter(t => t.id == userTeam.teamId)[0];
+    debugger
+    this.editFineForm = new FormBuilder().group({
+      name: [{ value: user.name, disabled: false}],
+      teamName:[{ value: team.name, disabled: false }],
+      fineType:[{value: fine.fineType, disabled: false}],
+      fineAmount:[{ value: fine.fineAmount, disabled: false }],
+      date:[{ value: fine.date, disabled: false }],
+      fineId:['']
+    })
+    debugger
+    this.modalRef = this.modalService.show(template);
   }
 }

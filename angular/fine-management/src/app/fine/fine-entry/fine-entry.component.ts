@@ -40,12 +40,12 @@ export class FineEntryComponent implements OnInit {
 
   ngOnInit() {
     this.fineEntryForm = this.formBuilder.group({
-      teamId: ['fd'],
+      teamId: [''],
       userId: [''],
       fineType: [''],
       fineAmount: [''],
       date: [''],
-      note: [''],
+      note: ['']
     });
 
     this.userService.getAllUsers().subscribe({

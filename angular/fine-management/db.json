@@ -59,12 +59,12 @@
   ],
   "fines": [
     {
-      "userTeamId": 2,
+      "userTeamId": 1,
       "fineType": "teamMeeting",
-      "fineAmount": 1000,
-      "date": "2022-02-07",
-      "note": "late in team meeting", 
-      "id": 1
+      "fineAmount": "100",
+      "date": "2022-02-09",
+      "note": "late",
+      "id": 3
     }
   ]
 }

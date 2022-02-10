@@ -15,11 +15,16 @@ export class FineService {
     );
   }
 
-  updateFine(fine: Fine): Observable<Fine> {
-    return <Observable<Fine>>this.http.put(`http://localhost:3000/fines`, fine);
+  updateFine(id: number, fine: Fine): Observable<Fine> {
+    return <Observable<Fine>>this.http.put(`http://localhost:3000/fines/${id}`, fine);
   }
 
   getAllFines(): Observable<Fine[]> {
     return <Observable<Fine[]>>this.http.get(`http://localhost:3000/fines`);
+  }
+
+  deleteFine(id: number): Observable<Fine[]>
+  {
+    return <Observable<Fine[]>>this.http.delete(`http://localhost:3000/fines/${id}`);
   }
 }

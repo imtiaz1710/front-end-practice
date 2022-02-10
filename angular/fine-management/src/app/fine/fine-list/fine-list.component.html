@@ -55,13 +55,17 @@
             class="form-control" />
         </div>
         <div class="col-md-12">
+          <label class="labels">Note</label><input formControlName="note" type="text"
+            class="form-control" />
+        </div>
+        <div class="col-md-12">
           <label class="labels">Date</label><input formControlName="date" type="date" class="form-control" />
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer justify-content-between">
-    <button type="button" class="btn btn-success" (click)="modalRef.hide();edit()">Save</button>
+    <button type="button" class="btn btn-success" (click)="modalRef.hide();edit(editFineForm.value.id)">Save</button>
     <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
   </div>
 </ng-template>

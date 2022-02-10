@@ -11,7 +11,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { UserTeamService } from 'src/app/services/user-team.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/user/user';
-import {FineTypes} from '../../enums/fine-types';
+import { FineTypes } from '../../enums/fine-types';
 
 @Component({
   selector: 'app-fine-list',
@@ -100,12 +100,27 @@ export class FineListComponent implements OnInit {
     });
   }
 
-  edit() {
-    this.fineService.updateFine(this.editFineForm.value);
+  edit(id: number) {
+    let fine = this.fines.find(f => f.id == id);
+
+    fine.fineType = this.editFineForm.value.fineType;
+    fine.fineAmount = this.editFineForm.value.fineAmount;
+    fine.note = this.editFineForm.value.note;
+    fine.date = this.editFineForm.value.date;
+
+    this.fineService.updateFine(fine.id, fine).subscribe({
+      next: (res) => this.toastrService.success("Successfully updated!"),
+      error: (err) => this.toastrService.error("Error!"),
+      complete: ()=> window.location.reload()
+    });
   }
 
-  Delete(value) { 
-    
+  Delete(value) {
+    this.fineService.deleteFine(value).subscribe({
+      next: (res) => this.toastrService.success("Successfully deleted!"),
+      error: (err) => this.toastrService.error("Error!"),
+      complete: ()=> window.location.reload()
+    });
   }
 
   openEditFineModal(template: TemplateRef<any>, fineId: number) {
@@ -113,16 +128,17 @@ export class FineListComponent implements OnInit {
     let userTeam = this.userTeams.filter(ut => ut.id == fine.userTeamId)[0];
     let user = this.users.filter(u => u.id == userTeam.userId)[0];
     let team = this.teams.filter(t => t.id == userTeam.teamId)[0];
-    debugger
+
     this.editFineForm = new FormBuilder().group({
-      name: [{ value: user.name, disabled: false}],
-      teamName:[{ value: team.name, disabled: false }],
-      fineType:[{value: fine.fineType, disabled: false}],
-      fineAmount:[{ value: fine.fineAmount, disabled: false }],
-      date:[{ value: fine.date, disabled: false }],
-      fineId:['']
+      name: [{ value: user.name, disabled: true }],
+      teamName: [{ value: team.name, disabled: true }],
+      fineType: [{ value: fine.fineType, disabled: false }],
+      fineAmount: [{ value: fine.fineAmount, disabled: false }],
+      date: [{ value: fine.date, disabled: false }],
+      note: [{value: fine.note, disabled: false}],
+      id: fine.id
     })
-    debugger
+
     this.modalRef = this.modalService.show(template);
   }
 }

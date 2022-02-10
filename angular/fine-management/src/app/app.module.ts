@@ -15,6 +15,7 @@ import { AlertConfig } from 'ngx-bootstrap/alert';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { TransactionModule } from './transaction/transaction.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     UserModule,
     ToastrModule.forRoot(),
     SharedModule,
+    TransactionModule
   ],
   providers: [
     AccessChecker,

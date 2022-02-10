@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.scss'],
+  selector: 'app-add-and-view-transaction',
+  templateUrl: './add-and-view-transaction.component.html',
+  styleUrls: ['./add-and-view-transaction.component.scss']
 })
-export class ReportComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-
+export class AddAndViewTransactionComponent implements OnInit {
   rows = [
     { name: 'Austin', fineType: 'Scrum', amount: 100, date: '2/2/3' },
     {
@@ -45,4 +41,8 @@ export class ReportComponent implements OnInit {
     { name: 'Amount' },
     { name: 'date' },
   ];
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 }

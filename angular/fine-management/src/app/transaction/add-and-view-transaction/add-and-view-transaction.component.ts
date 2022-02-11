@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Team } from 'src/app/models/team';
 import { Transaction } from 'src/app/models/transaction';
 import { UserTeam } from 'src/app/models/user-team';
-import { FineService } from 'src/app/services/fine.service';
 import { MyProfileService } from 'src/app/services/my-profile.service';
 import { TeamService } from 'src/app/services/team.service';
 import { TransactionService } from 'src/app/services/transaction.service';
@@ -28,8 +27,7 @@ export class AddAndViewTransactionComponent implements OnInit {
   myTeams: Team[];
   usersOfmySelectedTeam: User[];
   transactions: Transaction[];
-  filteredTransactions: Transaction[];
-
+  filteredTransactions: Transaction[] = [];
   rows = [];
 
   constructor(private modalService: BsModalService, private teamService: TeamService,
@@ -75,7 +73,6 @@ export class AddAndViewTransactionComponent implements OnInit {
       .catch((err) => console.log(err));
 
     this.loadTransactionList();
-    debugger
     this.rows = this.formateFineList();
   }
 
@@ -84,13 +81,16 @@ export class AddAndViewTransactionComponent implements OnInit {
       let userTeams = this.userTeams.filter((ut) => myTeam.id == ut.teamId);
 
       userTeams.forEach((ut) => {
-        let transaction = this.transactions.filter((tn) => tn.userTeamId == tn.id);
-        this.filteredTransactions.push(...transaction);
+        let transaction = this.transactions.filter((tn) => tn.userTeamId == ut.id);
+       
+        if(!!transaction)
+          this.filteredTransactions.push(...transaction);
       });
     });
   }
 
   private formateFineList() {
+    debugger
     return this.filteredTransactions.map((fl) => {
       let userTeam = this.userTeams.find((ut) => ut.id == fl.userTeamId);
       let user = this.users.find((u) => u.id == userTeam.userId);

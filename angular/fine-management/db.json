@@ -70,29 +70,10 @@
   "transactions": [
     {
       "userTeamId": 1,
-      "fineAmount": 100,
-      "date": "2022-02-10",
-      "note": "nothing to write",
-      "id": 1
-    },
-    {
-      "userTeamId": 2,
-      "date": "2022-02-10",
-      "note": "",
-      "id": 2
-    },
-    {
-      "userTeamId": 2,
-      "date": "2022-02-10",
-      "note": "",
-      "id": 3
-    },
-    {
-      "userTeamId": 2,
       "transactionAmount": 100,
-      "date": "2022-02-10",
-      "note": "",
-      "id": 4
+      "date": "2022-02-11",
+      "note": "demo",
+      "id": 1
     }
   ]
 }

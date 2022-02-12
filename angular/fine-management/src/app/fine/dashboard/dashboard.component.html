@@ -1,47 +1,22 @@
-<div class="card mt-3 p-5">
-  <div class="d-flex justify-content-between">
-    <div
-      class="card border-success"
-      style="max-width: 18rem; margin-right: 3px"
-    >
-      <div class="card-header">Header</div>
+<div *ngFor="let team of myTeams">
+  {{LoadUserTeamsByTeamId(team.id)}}
+  <div  class="card mt-3 p-5">
+    <div class="card border-success mb-3">
+      <div class="card-header bg-transparent border-success">Header</div>
       <div class="card-body text-success">
-        <h5 class="card-title">Success card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
+        <div class="d-flex justify-content-around">
+          <div *ngFor="let userTeam of filteredUserTeams" class="card border-dark " style="max-width: 18rem;">
+            {{LoadUserByUserTeam(userTeam)}}
+            <div class="card-header">{{filteredUser.name}}</div>
+            <div class="card-body text-dark">
+              <h5 class="card-title">Dark card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="card border-success" style="max-width:18rem; margin-right: 3px">
-      <div class="card-header">Header</div>
-      <div class="card-body text-success">
-        <h5 class="card-title">Success card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
-    </div>
-    <div class="card border-info" style="max-width: 18rem; margin-right: 3px">
-      <div class="card-header">Header</div>
-      <div class="card-body text-info">
-        <h5 class="card-title">Info card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
-    </div>
-    <div class="card border-info" style="max-width: 18rem; margin-right: 3px">
-      <div class="card-header">Header</div>
-      <div class="card-body text-info">
-        <h5 class="card-title">Info card title</h5>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
+      <div class="card-footer bg-transparent border-success">Footer</div>
     </div>
   </div>
 </div>
+

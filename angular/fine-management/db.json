@@ -74,6 +74,20 @@
       "date": "2022-02-11",
       "note": "demo",
       "id": 1
+    },
+    {
+      "userTeamId": 1,
+      "transactionAmount": 200,
+      "date": "2022-02-11",
+      "note": "demo",
+      "id": 2
+    },
+    {
+      "userTeamId": 2,
+      "transactionAmount": 300,
+      "date": "2022-02-11",
+      "note": "demo",
+      "id": 3
     }
   ]
 }

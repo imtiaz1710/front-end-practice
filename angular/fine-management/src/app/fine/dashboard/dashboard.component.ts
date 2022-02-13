@@ -79,4 +79,25 @@ export class DashboardComponent implements OnInit {
   {
     this.filteredTransactions = this.transactions.filter(tn => tn.userTeamId == userTeamId);
   }
+
+  calculateTotalFineByUserTeamId(userTeamId: number) : number
+  {
+    this.LoadFinesByUserTeamId(userTeamId);
+    let sum = 0;
+    this.filteredFines.forEach(f => sum += f.fineAmount);
+    return sum;
+  }
+
+  calculateTotalTransactionByUserTeamId(userTeamId: number) : number
+  {
+    this.LoadTransactionsByUserTeamId(userTeamId);
+    let sum = 0;
+    this.filteredTransactions.forEach(tn => sum += tn.transactionAmount);
+    return sum;
+  }
+
+  // calculateTotalTransactionByTeamId() : number
+  // {
+
+  // }
 }

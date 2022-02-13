@@ -61,7 +61,7 @@
     {
       "userTeamId": 1,
       "fineType": "teamMeeting",
-      "fineAmount": "100",
+      "fineAmount": 100,
       "date": "2022-02-09",
       "note": "late",
       "id": 3

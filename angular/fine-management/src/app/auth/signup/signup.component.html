@@ -1,6 +1,6 @@
 <div class="card">
   <div class="Left row align-content-center text-center">
-    <h1 class="h2" style="color: white">Already a Memeber?</h1>
+    <h3 class="h3" style="color: white">Already a Memeber?</h3>
     <br />
     <br />
     <br />
@@ -14,63 +14,42 @@
       </button>
     </div>
   </div>
-  <div class="right">
+  <div class="right" style="min-height: 00px;">
     <div class="container h-100">
       <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
           <!-- Form -->
-          <form
-            class="form-example"
-            [formGroup]="signupForm"
-            (ngSubmit)="signUp()"
-          >
-            <h2>Create a New Account</h2>
+          <form class="form-example" [formGroup]="signupForm" (ngSubmit)="signUp()">
+            <h3>Create a New Account</h3>
+            <br>
             <!-- Input fields -->
             <div class="form-group">
               <label for="email">Email:</label>
-              <input
-                pattern=".+@globex\.com"
-                size="30"
-                formControlName="email"
-                type="email"
-                class="form-control username"
-                id="email"
-                placeholder="Email..."
-              />
+              <input formControlName="email" type="email" class="form-control username" id="email"
+                placeholder="Email..." />
+              <div class="text-danger"
+                *ngIf="((signupFormControls['email'].touched || submitted)  && signupFormControls['email'].errors['required'])">
+                Email is required
+              </div>
+              <div class="text-danger"
+                *ngIf="((signupFormControls['email'].touched || submitted) && signupFormControls['email'].errors['email'])">
+                Email is invalid
+              </div>
+              <div class="text-danger"
+                *ngIf="((signupFormControls['email'].touched || submitted) && signupFormControls['email'].errors['maxlength'])">
+                Email is too long
+              </div>
             </div>
             <div class="form-group">
               <label for="password">Password:</label>
-              <input
-                required
-                formControlName="password"
-                type="password"
-                class="form-control password"
-                id="password"
-                placeholder="Password..."
-              />
+              <input required formControlName="password" type="password" class="form-control password" id="password"
+                placeholder="Password..." />
             </div>
             <div class="form-group">
               <label for="confirmPassword">Confirm Password:</label>
-              <input
-                formControlName="confirmPassword"
-                type="password"
-                class="form-control password"
-                id="confirmPassword"
-                placeholder="Confirm Password..."
-              />
+              <input formControlName="confirmPassword" type="password" class="form-control password"
+                id="confirmPassword" placeholder="Confirm Password..." />
             </div>
-            <!-- <div>
-              <label for="team">Select a Team:</label>
-              <select
-                class="dropdown form-control"
-                id="team"
-                formControlName="team"
-              >
-                <option *ngFor="let team of TEAMS" [ngValue]="team.name">
-                  {{ team.name }}
-                </option>
-              </select>
-            </div> -->
             <button type="submit" class="btn btn-2 btn-primary btn-customize">
               Sign Up
             </button>

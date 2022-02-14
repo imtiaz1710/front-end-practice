@@ -90,7 +90,6 @@ export class AddAndViewTransactionComponent implements OnInit {
   }
 
   private formateFineList() {
-    debugger
     return this.filteredTransactions.map((fl) => {
       let userTeam = this.userTeams.find((ut) => ut.id == fl.userTeamId);
       let user = this.users.find((u) => u.id == userTeam.userId);

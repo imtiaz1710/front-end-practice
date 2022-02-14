@@ -19,6 +19,46 @@
       "designation": "Trainee Software Eng",
       "phoneNo": "01521435113",
       "address": "62,shilmon,Tongi,Gazipur"
+    },
+    {
+      "email": "murad@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 3,
+      "name": "Murad Vai",
+      "designation": "Principle Software Engineer",
+      "phoneNo": "01332242122",
+      "address": "Mirpur"
+    },
+    {
+      "email": "zahid@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 4,
+      "name": "Zahid vai",
+      "designation": "Associate Software Engineer",
+      "phoneNo": "0145322993",
+      "address": "Uttara"
+    },
+    {
+      "email": "arif@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 5,
+      "name": "Arif Vai",
+      "designation": "Team Lead",
+      "phoneNo": "013322222222",
+      "address": "Mirpur"
+    },
+    {
+      "email": "saiful@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "id": 6,
+      "name": "Saiful Vai",
+      "designation": "Software Engineer",
+      "phoneNo": "0222222222222",
+      "address": "RayerBag"
     }
   ],
   "teams": [
@@ -55,6 +95,30 @@
       "teamId": 1,
       "isActive": true,
       "id": 2
+    },
+    {
+      "userId": 3,
+      "teamId": 1,
+      "isActive": true,
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "teamId": 1,
+      "isActive": true,
+      "id": 4
+    },
+    {
+      "userId": 5,
+      "teamId": 1,
+      "isActive": true,
+      "id": 5
+    },
+    {
+      "userId": 6,
+      "teamId": 1,
+      "isActive": true,
+      "id": 6
     }
   ],
   "fines": [
@@ -73,14 +137,6 @@
       "date": "2022-02-13",
       "note": "5 mins late",
       "id": 4
-    },
-    {
-      "userTeamId": 1,
-      "fineType": "scrum",
-      "fineAmount": 200,
-      "date": "2022-02-14",
-      "note": "late",
-      "id": 5
     }
   ],
   "transactions": [

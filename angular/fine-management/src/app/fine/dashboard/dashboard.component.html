@@ -5,9 +5,9 @@
       <div class="card-header bg-transparent border-success">
         <h4>{{team.name}}</h4>
       </div>
-      <div class="card-body text-success">
-        <div class="d-flex justify-content-around">
-          <div *ngFor="let userTeam of filteredUserTeams" class="card border-dark " style="max-width: 18rem;">
+      <div class="card-body text-success container">
+        <div class="row justify-content-around">
+          <div *ngFor="let userTeam of filteredUserTeams" class="card border-dark col-md-4 mb-3" style="max-width: 18rem;">
             {{LoadUserByUserTeam(userTeam)}}
             <div class="card-header">
               <h5>{{filteredUser.name}}</h5>

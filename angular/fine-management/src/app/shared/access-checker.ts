@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router'
-import { debug } from 'console';
+import { Router } from '@angular/router';
 import { UserTeam } from '../models/user-team';
 import { UserTeamService } from '../services/user-team.service';
 

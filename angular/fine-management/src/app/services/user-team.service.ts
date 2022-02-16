@@ -31,7 +31,7 @@ export class UserTeamService {
     });
   }
 
-  getAllUserTeams()
+  getAllUserTeams(): Observable<UserTeam[]>
   {
     return this.http.get<UserTeam[]>(
       `http://localhost:3000/userTeams`

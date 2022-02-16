@@ -26,52 +26,51 @@
             <div class="form-group">
               <label for="email">Email:</label>
               <input formControlName="email" type="email" class="form-control username" id="email"
-                placeholder="Email..." />
-              <div class="text-danger"
-                *ngIf="((signupFormControls['email'].touched || submitted)  && signupFormControls['email'].errors['required'])">
-                Email is required
-              </div>
-              <div class="text-danger"
-                *ngIf="((signupFormControls['email'].touched || submitted) && signupFormControls['email'].errors['email'])">
-                Email is invalid
-              </div>
-              <div class="text-danger"
-                *ngIf="((signupFormControls['email'].touched || submitted) && signupFormControls['email'].errors['maxlength'])">
-                Email is too long
-              </div>
-              <div class="text-danger"
-                *ngIf="((signupFormControls['email'].touched || submitted) && signupFormControls['email'].errors['duplicate'])">
-                Email already used
+                placeholder="Email..." [ngClass]="{'is-invalid': submitted && signupFormControls['email'].errors}" />
+              <div *ngIf="(submitted && signupFormControls['email'].errors)">
+                <div class="text-danger" *ngIf="(signupFormControls['email'].errors['required'])">
+                  Email is required
+                </div>
+                <div class="text-danger" *ngIf="(signupFormControls['email'].errors['email'])">
+                  Invalid Email
+                </div>
+                <div class="text-danger" *ngIf="(signupFormControls['email'].errors['maxlength'])">
+                  Invalid Email
+                </div>
+                <div class="text-danger" *ngIf="(signupFormControls['email'].errors['duplicate'])">
+                  Email already used
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label for="password">Password:</label>
               <input required formControlName="password" type="password" class="form-control password" id="password"
-                placeholder="Password..." />
-              <div class="text-danger"
-                *ngIf="((signupFormControls['password'].touched || submitted)  && signupFormControls['password'].errors['required'])">
-                Password is required
-              </div>
-              <div class="text-danger"
-                *ngIf="((signupFormControls['password'].touched || submitted)  && signupFormControls['password'].errors['minlength'])">
-                Password must be at least 6 characters
-              </div>
-              <div class="text-danger"
-                *ngIf="((signupFormControls['password'].touched || submitted)  && signupFormControls['password'].errors['maxlength'])">
-                Password must not exceed 30 characters
+                placeholder="Password..."
+                [ngClass]="{'is-invalid': submitted && signupFormControls['password'].errors}" />
+              <div *ngIf="(submitted && signupFormControls['password'].errors)">
+                <div class="text-danger" *ngIf="(signupFormControls['password'].errors['required'])">
+                  Password is required
+                </div>
+                <div class="text-danger" *ngIf="(signupFormControls['password'].errors['minlength'])">
+                  Password must be at least 6 characters
+                </div>
+                <div class="text-danger" *ngIf="(signupFormControls['password'].errors['maxlength'])">
+                  Password must not exceed 30 characters
+                </div>
               </div>
             </div>
             <div class="form-group">
               <label for="confirmPassword">Confirm Password:</label>
               <input formControlName="confirmPassword" type="password" class="form-control password"
-                id="confirmPassword" placeholder="Confirm Password..." />
-              <div class="text-danger"
-                *ngIf="((signupFormControls['confirmPassword'].touched || submitted)  && signupFormControls['confirmPassword'].errors['required'])">
-                Confirm password is required
-              </div>
-              <div class="text-danger"
-                *ngIf="((signupFormControls['confirmPassword'].touched || submitted)  && signupFormControls['confirmPassword'].errors['matching'])">
-                Confirm Password does not match
+                id="confirmPassword" placeholder="Confirm Password..."
+                [ngClass]="{'is-invalid': submitted && signupFormControls['confirmPassword'].errors}" />
+              <div *ngIf="(submitted && signupFormControls['confirmPassword'].errors)">
+                <div class="text-danger" *ngIf="(signupFormControls['confirmPassword'].errors['required'])">
+                  Confirm password is required
+                </div>
+                <div class="text-danger" *ngIf="(signupFormControls['confirmPassword'].errors['matching'])">
+                  Confirm Password does not match
+                </div>
               </div>
             </div>
             <button type="submit" class="btn btn-2 btn-primary btn-customize">

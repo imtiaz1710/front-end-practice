@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
     confirmPassword: new FormControl('')
   });
 
-  users: User[];
+  users: User[] = [];
   submitted: boolean = false;
 
   constructor(
@@ -33,11 +33,11 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email, Validators.maxLength(40)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(320)]],
       password: ['', [
         Validators.required,
         Validators.minLength(6),
-        Validators.maxLength(30)
+        Validators.maxLength(50)
       ]],
       confirmPassword: ['', Validators.required]
     },
@@ -61,7 +61,6 @@ export class SignupComponent implements OnInit {
     if(this.users.find(u => u.email === this.signupForm.value.email))
     {
       this.signupFormControls['email'].setErrors({ duplicate: true })
-      alert('duplicate')
     }
 
     if (this.signupForm.valid) {

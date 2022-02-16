@@ -23,6 +23,8 @@ body {
   display: grid;
   grid-template-columns: 35% 65%;
   grid-template-areas: "Left right";
+  // min-width: 682.5px;
+  min-height: 390px;
 }
 
 .Left {

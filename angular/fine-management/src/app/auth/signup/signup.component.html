@@ -24,6 +24,19 @@
             <br>
             <!-- Input fields -->
             <div class="form-group">
+              <label for="name">Name:</label>
+              <input formControlName="name" type="name" class="form-control username" id="name"
+                placeholder="Name..." [ngClass]="{'is-invalid': submitted && signupFormControls['name'].errors}" />
+              <div *ngIf="(submitted && signupFormControls['name'].errors)">
+                <div class="text-danger" *ngIf="(signupFormControls['name'].errors['required'])">
+                  Name is required
+                </div>
+                <div class="text-danger" *ngIf="(signupFormControls['name'].errors['maxlength'])">
+                  Name is too long
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="email">Email:</label>
               <input formControlName="email" type="email" class="form-control username" id="email"
                 placeholder="Email..." [ngClass]="{'is-invalid': submitted && signupFormControls['email'].errors}" />
@@ -62,7 +75,7 @@
             <div class="form-group">
               <label for="confirmPassword">Confirm Password:</label>
               <input formControlName="confirmPassword" type="password" class="form-control password"
-                id="confirmPassword" placeholder="Confirm Password..."
+                id="confirmPassword" placeholder="Confirm password..."
                 [ngClass]="{'is-invalid': submitted && signupFormControls['confirmPassword'].errors}" />
               <div *ngIf="(submitted && signupFormControls['confirmPassword'].errors)">
                 <div class="text-danger" *ngIf="(signupFormControls['confirmPassword'].errors['required'])">

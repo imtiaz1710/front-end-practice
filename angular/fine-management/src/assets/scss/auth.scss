@@ -11,9 +11,9 @@ body {
 .card {
   box-shadow: -4px 4px 38px -3px rgba(0, 0, 0, 0.75);
   position: fixed;
-  height: 80%;
+  height: 85%;
   width: 70%;
-  top: 10%;
+  top: 8%;
   bottom: 10%;
   left: 15%;
   right: 10%;
@@ -24,7 +24,7 @@ body {
   grid-template-columns: 35% 65%;
   grid-template-areas: "Left right";
   // min-width: 682.5px;
-  min-height: 390px;
+  min-height: 500px;
 }
 
 .Left {

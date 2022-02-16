@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
@@ -15,6 +15,7 @@ import Validation from '../validation';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl('')
@@ -33,6 +34,7 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(320)]],
       password: ['', [
         Validators.required,
@@ -57,12 +59,11 @@ export class SignupComponent implements OnInit {
 
   signUp() {
     this.submitted = true;
-
-    if(this.users.find(u => u.email === this.signupForm.value.email))
-    {
+    
+    if (this.users.find(u => u.email === this.signupForm.value.email)) {
       this.signupFormControls['email'].setErrors({ duplicate: true })
-    }
-
+    } 
+           
     if (this.signupForm.valid) {
       this.submitted = false;
       this.http

@@ -2,8 +2,8 @@
   "users": [
     {
       "email": "akhter@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
+      "password": "123456",
+      "confirmPassword": "123456",
       "id": 1,
       "name": "Akhter",
       "designation": "Associate Software Engineer",
@@ -12,8 +12,8 @@
     },
     {
       "email": "imtiaz.mehedi.iubat@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
+      "password": "123456",
+      "confirmPassword": "123456",
       "id": 2,
       "name": "Imtiaz",
       "designation": "Trainee Software Eng",
@@ -22,8 +22,8 @@
     },
     {
       "email": "murad@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
+      "password": "123456",
+      "confirmPassword": "123456",
       "id": 3,
       "name": "Murad Vai",
       "designation": "Principle Software Engineer",
@@ -32,8 +32,8 @@
     },
     {
       "email": "zahid@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
+      "password": "123456",
+      "confirmPassword": "123456",
       "id": 4,
       "name": "Zahid vai",
       "designation": "Associate Software Engineer",
@@ -42,8 +42,8 @@
     },
     {
       "email": "arif@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
+      "password": "123456",
+      "confirmPassword": "123456",
       "id": 5,
       "name": "Arif Vai",
       "designation": "Team Lead",
@@ -52,8 +52,8 @@
     },
     {
       "email": "saiful@gmail.com",
-      "password": "123",
-      "confirmPassword": "123",
+      "password": "123456",
+      "confirmPassword": "123456",
       "id": 6,
       "name": "Saiful Vai",
       "designation": "Software Engineer",
@@ -61,40 +61,11 @@
       "address": "RayerBag"
     },
     {
-      "email": "imtiaz.mehedi.iubat@gmail.comfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-      "password": "",
-      "confirmPassword": "",
-      "id": 7
-    },
-    {
-      "email": "imtiaz.mehedi.iubat@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": 8
-    },
-    {
-      "email": "imtiaz.mehedi.iubat@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": 9
-    },
-    {
+      "name": "Tanjila",
       "email": "abc@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": 10
-    },
-    {
-      "email": "a@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": 11
-    },
-    {
-      "email": "b@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": 12
+      "id": 7
     }
   ],
   "teams": [
@@ -155,6 +126,12 @@
       "teamId": 1,
       "isActive": true,
       "id": 6
+    },
+    {
+      "userId": 7,
+      "teamId": 1,
+      "isActive": true,
+      "id": 7
     }
   ],
   "fines": [

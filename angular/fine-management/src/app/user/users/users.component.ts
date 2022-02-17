@@ -23,7 +23,10 @@ import { ToastrService } from 'ngx-toastr';
 export class UsersComponent implements OnInit {
   modalRef: BsModalRef;
   myTeams: Team[] = [];
-  addToTeamForm: FormGroup;
+  addToTeamForm: FormGroup = new FormGroup({
+    userId: new FormControl(''),
+    teamId: new FormControl('')
+  });
   teams: Team[] = [];
   users: User[] = [];
   userTeams: UserTeam[] = [];
@@ -37,9 +40,18 @@ export class UsersComponent implements OnInit {
     private userTeamService: UserTeamService,
     private teamService: TeamService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    this.addToTeamForm = this.formBuilder.group({
+      userId: ['', Validators.required],
+      teamId: ['', Validators.required],
+    });
+
+    this.loadAllDataForDataTable();
+  }
+
+  loadAllDataForDataTable() {
     this.rows = [];
     let usersPromise = this.userService.getAllUsersPromise();
     let teamsPromise = this.teamService.getAllTeamsPromise();
@@ -76,19 +88,14 @@ export class UsersComponent implements OnInit {
 
       this.rows = this.rows.map(
         (row) =>
-          (row = {
-            name: row.name,
-            email: row.email,
-            phoneNo: row.phoneNo,
-            teamName: row.teamName,
-            userTeamId: row.userTeamId,
-          })
+        (row = {
+          name: row.name,
+          email: row.email,
+          phoneNo: row.phoneNo,
+          teamName: row.teamName,
+          userTeamId: row.userTeamId,
+        })
       );
-    });
-
-    this.addToTeamForm = this.formBuilder.group({
-      userId: ['', Validators.required],
-      teamId: ['', Validators.required],
     });
   }
 
@@ -108,13 +115,14 @@ export class UsersComponent implements OnInit {
     } else {
       let userTeam: UserTeam = {
         ...this.addToTeamForm.value,
-        isActive: true,
+        isActive: true
       };
 
       this.userTeamService.addUserTeam(userTeam).subscribe({
         next: (res) => {
           this.toastrService.success('Member successfully added to a team!');
-          window.location.reload();
+          this.addToTeamForm.reset();
+          this.loadAllDataForDataTable();
         },
         error: (err) => this.toastrService.error('Failed to add user!'),
       });
@@ -122,6 +130,7 @@ export class UsersComponent implements OnInit {
   }
 
   openAddUserModal(template: TemplateRef<any>) {
+    debugger
     if (this.addToTeamForm.valid)
       this.modalRef = this.modalService.show(template);
     else this.toastrService.error('invalid operation!');
@@ -133,6 +142,7 @@ export class UsersComponent implements OnInit {
   }
 
   onDelete(value) {
+    debugger
     let userTeam = this.userTeams.filter((ut) => ut.id == value)[0];
     this.changeStatusOfUserTeam(userTeam, false);
   }
@@ -143,9 +153,10 @@ export class UsersComponent implements OnInit {
     this.userTeamService.updateUserTeam(userTeam).subscribe({
       next: (res) => {
         this.toastrService.success('Done!');
-        window.location.reload();
+        this.addToTeamForm.reset();
+        this.loadAllDataForDataTable();
       },
-      error: (err) => this.toastrService.error('Operation Failed!'),
+      error: (err) => this.toastrService.error('Operation Failed!')
     });
   }
 }

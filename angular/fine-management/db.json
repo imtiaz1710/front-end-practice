@@ -61,11 +61,11 @@
       "address": "RayerBag"
     },
     {
-      "name": "Tanjila",
+      "name": "Mahin",
       "email": "abc@gmail.com",
       "password": "123456",
       "confirmPassword": "123456",
-      "id": 7
+      "id": 8
     }
   ],
   "teams": [
@@ -95,7 +95,7 @@
       "id": 1,
       "userId": 1,
       "teamId": 1,
-      "isActive": true
+      "isActive": false
     },
     {
       "userId": 2,
@@ -118,17 +118,17 @@
     {
       "userId": 5,
       "teamId": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 5
     },
     {
       "userId": 6,
       "teamId": 1,
-      "isActive": true,
+      "isActive": false,
       "id": 6
     },
     {
-      "userId": 7,
+      "userId": 8,
       "teamId": 1,
       "isActive": true,
       "id": 7
@@ -150,6 +150,14 @@
       "date": "2022-02-13",
       "note": "5 mins late",
       "id": 4
+    },
+    {
+      "userTeamId": 6,
+      "fineType": "scrum",
+      "fineAmount": 100,
+      "date": "2022-02-17",
+      "note": "late",
+      "id": 5
     }
   ],
   "transactions": [

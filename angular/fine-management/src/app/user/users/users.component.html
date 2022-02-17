@@ -1,39 +1,25 @@
 <div class="card mt-5">
   <h4 class="card" style="margin: auto; margin-top: 2%; padding: 10px; color:rgb(111, 114, 117)">Add a User</h4>
-  <form
-    class="form-group"
-    style="margin-left: 4%; width: 30%"
-    [formGroup]="addToTeamForm"
-  >
-    <label class="mb-2" for="inlineFormCustomSelectPref">Select a User :</label>
-    <select
-      class="form-control mb-2"
-      id="inlineFormCustomSelectPref"
-      formControlName="userId"
-    >
+  {{addToTeamForm.value | json}}
+  <form class="form-group"  style="margin-left: 4%; width: 30%" 
+    [formGroup]="addToTeamForm" (ngSubmit)="openAddUserModal(AddUserModalTemplate)">
+    <label class="mb-2" for="userId">Select a User :</label>
+    <select class="form-control mb-2" id="userId" formControlName="userId">
+      <option value="">Select a User...</option>
       <option *ngFor="let user of users" [ngValue]="user.id">
-      &#160; Email : {{user.email}}  &#160; Name : {{user.name}}
-      </option> 
-    </select>
-    
-    <label class="mb-2" for="inlineFormCustomSelectPref">Select a Team :</label>
-    <select
-      class="form-control"
-      id="inlineFormCustomSelectPref"
-      formControlName="teamId"
-    >
-      <option *ngFor="let team of myTeams" [ngValue]="team.id">
-        {{ team.name }}
+        &#160;{{user.name }} ({{user.email}}) &#160;
       </option>
     </select>
 
+    <label class="mb-2" for="teamId">Select a Team :</label>
+    <select class="form-control" id="teamId" formControlName="teamId">
+      <option value="">Select a Team...</option>
+      <option *ngFor="let team of myTeams" [ngValue]="team.id">
+        {{ team.name }} {{team.id}}
+      </option>
+    </select>
     <div style="margin-bottom: 20px; margin-top: 10px">
-      <button
-        (click)="openAddUserModal(AddUserModalTemplate)"
-        type="submit"
-        class="btn btn-primary my-1"
-        style="background-color: rgb(42, 193, 140)"
-      >
+      <button type="submit"  class="btn btn-primary my-1" style="background-color: rgb(42, 193, 140)">
         Submit
       </button>
     </div>
@@ -41,33 +27,17 @@
 </div>
 
 <div class="mt-5">
-  <ngx-datatable
-    class="material p-4"
-    [rows]="rows"
-    [headerHeight]="50"
-    [rowHeight]="80"
-    [footerHeight]="50"
-    [scrollbarV]="false"
-    [scrollbarH]="true"
-    [columnMode]=""
-  >
+  <ngx-datatable class="material p-4" [rows]="rows" [headerHeight]="50" [rowHeight]="80" [footerHeight]="50"
+    [scrollbarV]="false" [scrollbarH]="true" [columnMode]="">
     <ngx-datatable-column [minWidth]="150" name="Name" prop="name"> </ngx-datatable-column>
     <ngx-datatable-column [minWidth]="250" name="Email" prop="email"> </ngx-datatable-column>
     <ngx-datatable-column [minWidth]="200" name="Phone No" prop="phoneNo">
     </ngx-datatable-column>
     <ngx-datatable-column [minWidth]="200" name="Team Name" prop="teamName"> </ngx-datatable-column>
     <ngx-datatable-column [minWidth]="250" name="Action" prop="userTeamId">
-      <ng-template
-        ngx-datatable-cell-template
-        let-rowIndex="rowIndex"
-        let-value="value"
-        let-row="row"
-      >
-        <button
-          type="button"
-          class="btn btn-outline-danger"
-          (click)="openDeleteUserModal(DeleteUserModalTemplate, value)"
-        >
+      <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+        <button type="button" class="btn btn-outline-danger"
+          (click)="openDeleteUserModal(DeleteUserModalTemplate, value)">
           Remove from Team
         </button>
       </ng-template>
@@ -76,35 +46,33 @@
 </div>
 
 <ng-template #AddUserModalTemplate>
-   <div class="modal-header">
-      <h4 class="modal-title pull-left">Edit Fine</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-         <span aria-hidden="true">×</span>
-      </button>
-   </div>
-   <div class="modal-body">
-      Are You Sure You Want to Add the Selected User to Your Team?
-   </div>
-   <div class="modal-footer justify-content-between">
-      <button type="button" class="btn btn-success" (click)="modalRef.hide();onAdd();">Add</button>
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-   </div>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Fine</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to add the selected user to your team?
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-success" (click)="modalRef.hide();onAdd();">Add</button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
 </ng-template>
 
 <ng-template #DeleteUserModalTemplate>
-   <div class="modal-header">
-      <h4 class="modal-title pull-left">Remove User</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-         <span aria-hidden="true">×</span>
-      </button>
-   </div>
-   <div class="modal-body">
-      Are You Sure You Want to Remove Selected User from Your Team?
-   </div>
-   <div class="modal-footer justify-content-between">
-      <button type="button" class="btn btn-danger" (click)="modalRef.hide();onDelete(modalRef.content);">Remove</button>
-      <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-   </div>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Remove User</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to remove selected user from your team?
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-danger" (click)="modalRef.hide();onDelete(modalRef.content);">Remove</button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
 </ng-template>
-
-

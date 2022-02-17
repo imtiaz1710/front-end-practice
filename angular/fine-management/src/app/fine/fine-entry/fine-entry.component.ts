@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';
 import { Team } from 'src/app/models/team';
 import { UserTeam } from 'src/app/models/user-team';
 import { MyProfileService } from 'src/app/services/my-profile.service';
@@ -35,7 +35,8 @@ export class FineEntryComponent implements OnInit {
     private toastrService: ToastrService,
     private myProfileService: MyProfileService,
     private formBuilder: FormBuilder,
-    private fineService: FineService
+    private fineService: FineService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -101,7 +102,7 @@ export class FineEntryComponent implements OnInit {
     this.fineService.addFine(fine).subscribe({
       next: () => this.toastrService.success('Successfully add fine!'),
       error: (err) => this.toastrService.error('Error! Can not add fine!'),
-      complete: () => setInterval(() => window.location.reload(), 2000),
+      complete: () => this.router.navigate(['/main/fineList']),
     });
   }
 }

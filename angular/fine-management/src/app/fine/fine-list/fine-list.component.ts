@@ -28,7 +28,7 @@ export class FineListComponent implements OnInit {
   filteredFineList: Fine[];
   rows = [];
   editFineForm: FormGroup;
-  fineTypes: FineTypes;
+  fineTypes = FineTypes;
   keys = Object.keys;
 
   constructor(
@@ -132,7 +132,7 @@ export class FineListComponent implements OnInit {
     this.editFineForm = new FormBuilder().group({
       name: [{ value: user.name, disabled: true }],
       teamName: [{ value: team.name, disabled: true }],
-      fineType: [{ value: fine.fineType, disabled: false }],
+      fineType: [''],
       fineAmount: [{ value: fine.fineAmount, disabled: false }],
       date: [{ value: fine.date, disabled: false }],
       note: [{value: fine.note, disabled: false}],

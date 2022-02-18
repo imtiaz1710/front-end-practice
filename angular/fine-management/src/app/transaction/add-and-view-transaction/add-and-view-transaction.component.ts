@@ -47,6 +47,10 @@ export class AddAndViewTransactionComponent implements OnInit {
       note: [''],
     });
 
+    await this.loadAllDataForTrasactionTable();
+  }
+
+  private async loadAllDataForTrasactionTable() {
     await this.transactionService.getAllTransactions().subscribe({
       next: (transactions) => (this.transactions = transactions),
       error: (err) => console.log(err),
@@ -72,6 +76,7 @@ export class AddAndViewTransactionComponent implements OnInit {
       .then((teams) => (this.myTeams = teams))
       .catch((err) => console.log(err));
 
+    this.filteredTransactions = [];
     this.loadTransactionList();
     this.rows = this.formateFineList();
   }
@@ -82,8 +87,8 @@ export class AddAndViewTransactionComponent implements OnInit {
 
       userTeams.forEach((ut) => {
         let transaction = this.transactions.filter((tn) => tn.userTeamId == ut.id);
-       
-        if(!!transaction)
+
+        if (!!transaction)
           this.filteredTransactions.push(...transaction);
       });
     });
@@ -116,7 +121,7 @@ export class AddAndViewTransactionComponent implements OnInit {
     this.transactionService.updateFine(transaction.id, transaction).subscribe({
       next: (res) => this.toastrService.success("Successfully updated!"),
       error: (err) => this.toastrService.error("Error!"),
-      complete: ()=> window.location.reload()
+      complete: () => this.loadAllDataForTrasactionTable()
     });
   }
 
@@ -124,7 +129,7 @@ export class AddAndViewTransactionComponent implements OnInit {
     this.transactionService.deleteFine(id).subscribe({
       next: (res) => this.toastrService.success("Successfully deleted!"),
       error: (err) => this.toastrService.error("Error!"),
-      complete: ()=> window.location.reload()
+      complete: () => this.loadAllDataForTrasactionTable()
     });
   }
 
@@ -159,7 +164,7 @@ export class AddAndViewTransactionComponent implements OnInit {
     this.transactionService.addTransaction(transaction).subscribe({
       next: () => this.toastrService.success('Successfully added transaction!'),
       error: (err) => this.toastrService.error('Error!'),
-      complete: () => setInterval(() => window.location.reload(), 2000),
+      complete: () => this.loadAllDataForTrasactionTable(),
     });
   }
 
@@ -178,7 +183,7 @@ export class AddAndViewTransactionComponent implements OnInit {
       teamName: [{ value: team.name, disabled: true }],
       transactionAmount: [{ value: transaction.transactionAmount, disabled: false }],
       date: [{ value: transaction.date, disabled: false }],
-      note: [{value: transaction.note, disabled: false}],
+      note: [{ value: transaction.note, disabled: false }],
       id: transaction.id
     })
 

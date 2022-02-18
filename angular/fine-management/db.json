@@ -66,6 +66,13 @@
       "password": "123456",
       "confirmPassword": "123456",
       "id": 8
+    },
+    {
+      "name": "shuvo",
+      "email": "shuvo@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": 9
     }
   ],
   "teams": [
@@ -152,12 +159,20 @@
       "id": 4
     },
     {
-      "userTeamId": 6,
+      "userTeamId": 2,
       "fineType": "scrum",
       "fineAmount": 100,
-      "date": "2022-02-17",
+      "date": "2022-02-18",
       "note": "late",
-      "id": 5
+      "id": 6
+    },
+    {
+      "userTeamId": 1,
+      "fineType": "scrum",
+      "fineAmount": 300,
+      "date": "2022-02-18",
+      "note": "",
+      "id": 7
     }
   ],
   "transactions": [
@@ -174,13 +189,6 @@
       "date": "2022-02-11",
       "note": "demo",
       "id": 2
-    },
-    {
-      "userTeamId": 2,
-      "transactionAmount": 300,
-      "date": "2022-02-11",
-      "note": "demo",
-      "id": 3
     }
   ]
 }

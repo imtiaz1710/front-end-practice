@@ -1,6 +1,5 @@
 <div class="card mt-5">
   <h4 class="card" style="margin: auto; margin-top: 2%; padding: 10px; color:rgb(111, 114, 117)">Add a User</h4>
-  {{addToTeamForm.value | json}}
   <form class="form-group"  style="margin-left: 4%; width: 30%" 
     [formGroup]="addToTeamForm" (ngSubmit)="openAddUserModal(AddUserModalTemplate)">
     <label class="mb-2" for="userId">Select a User :</label>

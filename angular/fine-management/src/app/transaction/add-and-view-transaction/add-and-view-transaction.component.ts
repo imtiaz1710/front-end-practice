@@ -184,4 +184,9 @@ export class AddAndViewTransactionComponent implements OnInit {
 
     this.modalRef = this.modalService.show(template);
   }
+
+  openDeleteTransactionModal(template: TemplateRef<any>, transactionId: number) {
+    this.modalRef = this.modalService.show(template);
+    this.modalRef.content = transactionId;
+  }
 }

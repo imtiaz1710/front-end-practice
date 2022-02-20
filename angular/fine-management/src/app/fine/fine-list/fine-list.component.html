@@ -49,9 +49,6 @@
             placeholder="enter phone number" />
         </div>
         <div class="col-md-12">
-          <!-- <label class="labels" for="fineType">Fine Type</label>
-          <input formControlName="fineType" type="text"
-          class="form-control"/> -->
           <label for="fineType">Fine Type :</label>
           <select class="form-control mb-2 form-select" id="fineType" formControlName="fineType">
             <option [ngValue]="editFineForm.value.fineType">{{fineTypes[editFineForm.value.fineType]}}</option>
@@ -61,7 +58,7 @@
           </select>
         </div>
         <div class="col-md-12">
-          <label class="labels">Fine Amount</label><input formControlName="fineAmount" type="text"
+          <label class="labels">Fine Amount</label><input formControlName="fineAmount" type="number"
             class="form-control" />
         </div>
         <div class="col-md-12">

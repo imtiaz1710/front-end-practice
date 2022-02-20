@@ -15,7 +15,7 @@
       "password": "123456",
       "confirmPassword": "123456",
       "id": 2,
-      "name": "Imtiaz",
+      "name": "Imtiaz Mehedi",
       "designation": "Trainee Software Eng",
       "phoneNo": "01521435113",
       "address": "62,shilmon,Tongi,Gazipur"
@@ -144,35 +144,27 @@
   "fines": [
     {
       "userTeamId": 1,
-      "fineType": "teamMeeting",
+      "fineType": "scrum",
+      "fineAmount": 200,
+      "date": "2022-02-20",
+      "note": "for late",
+      "id": 1
+    },
+    {
+      "userTeamId": 4,
+      "fineType": "ManagementMeeting",
       "fineAmount": 100,
-      "date": "2022-02-09",
+      "date": "2022-02-20",
+      "note": "3 mins late",
+      "id": 2
+    },
+    {
+      "userTeamId": 5,
+      "fineType": "teamMeeting",
+      "fineAmount": 200,
+      "date": "2022-02-20",
       "note": "late",
       "id": 3
-    },
-    {
-      "userTeamId": 2,
-      "fineType": "teamMeeting",
-      "fineAmount": 1000,
-      "date": "2022-02-13",
-      "note": "5 mins late",
-      "id": 4
-    },
-    {
-      "userTeamId": 2,
-      "fineType": "scrum",
-      "fineAmount": 100,
-      "date": "2022-02-18",
-      "note": "late",
-      "id": 6
-    },
-    {
-      "userTeamId": 1,
-      "fineType": "scrum",
-      "fineAmount": 300,
-      "date": "2022-02-18",
-      "note": "",
-      "id": 7
     }
   ],
   "transactions": [

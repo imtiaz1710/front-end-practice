@@ -14,7 +14,7 @@
     <select class="form-control" id="teamId" formControlName="teamId">
       <option value="">Select a Team...</option>
       <option *ngFor="let team of myTeams" [ngValue]="team.id">
-        {{ team.name }} {{team.id}}
+        {{ team.name }}
       </option>
     </select>
     <div style="margin-bottom: 20px; margin-top: 10px">

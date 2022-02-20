@@ -41,7 +41,12 @@ export class FineListComponent implements OnInit {
     private modalService: BsModalService
   ) { }
 
-  async ngOnInit() {
+  ngOnInit(): void {
+    this.loadAllDataForFineList();
+  }
+
+  private async loadAllDataForFineList()
+  {
     this.filteredFineList = [];
     await this.fineService.getAllFines().subscribe({
       next: (fines) => (this.fines = fines),
@@ -80,7 +85,7 @@ export class FineListComponent implements OnInit {
       return {
         name: user.name,
         teamName: team.name,
-        fineType: fl.fineType,
+        fineType: this.fineTypes[fl.fineType],
         fineAmount: fl.fineAmount,
         date: fl.date,
         note: fl.note,
@@ -111,7 +116,7 @@ export class FineListComponent implements OnInit {
     this.fineService.updateFine(fine.id, fine).subscribe({
       next: (res) => this.toastrService.success("Successfully updated!"),
       error: (err) => this.toastrService.error("Error!"),
-      complete: ()=> window.location.reload()
+      complete: () => this.loadAllDataForFineList()
     });
   }
 
@@ -119,7 +124,7 @@ export class FineListComponent implements OnInit {
     this.fineService.deleteFine(value).subscribe({
       next: (res) => this.toastrService.success("Successfully deleted!"),
       error: (err) => this.toastrService.error("Error!"),
-      complete: ()=> window.location.reload()
+      complete: () => this.loadAllDataForFineList()
     });
   }
 
@@ -132,13 +137,18 @@ export class FineListComponent implements OnInit {
     this.editFineForm = new FormBuilder().group({
       name: [{ value: user.name, disabled: true }],
       teamName: [{ value: team.name, disabled: true }],
-      fineType: [''],
+      fineType: [{ value: fine.fineType, disabled: false }],
       fineAmount: [{ value: fine.fineAmount, disabled: false }],
       date: [{ value: fine.date, disabled: false }],
-      note: [{value: fine.note, disabled: false}],
+      note: [{ value: fine.note, disabled: false }],
       id: fine.id
     })
 
     this.modalRef = this.modalService.show(template);
+  }
+
+  openDeleteFineModal(template: TemplateRef<any>, fineId: number) {
+    this.modalRef = this.modalService.show(template);
+    this.modalRef.content = fineId;
   }
 }

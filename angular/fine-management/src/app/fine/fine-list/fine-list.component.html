@@ -1,13 +1,15 @@
-<div style="text-align: center;" class="mt-4 mb-4"><h4>Fine List</h4></div>
+<div style="text-align: center;" class="mt-4 mb-4">
+  <h4>Fine List</h4>
+</div>
 <div class="container">
   <ngx-datatable class="material p-4" [rows]="rows" [headerHeight]="50" [rowHeight]="80" [footerHeight]="50"
     [scrollbarV]="false" [scrollbarH]="true">
-    <ngx-datatable-column name="Name" prop="name"> </ngx-datatable-column>
-    <ngx-datatable-column name="Team Name" prop="teamName">
+    <ngx-datatable-column [minWidth]="150" name="Name" prop="name"> </ngx-datatable-column>
+    <ngx-datatable-column [minWidth]="100" name="Team Name" prop="teamName">
     </ngx-datatable-column>
-    <ngx-datatable-column name="Fine Type" prop="fineType">
+    <ngx-datatable-column [minWidth]="150" name="Fine Type" prop="fineType">
     </ngx-datatable-column>
-    <ngx-datatable-column name="Fine Amount" prop="fineAmount">
+    <ngx-datatable-column [minWidth]="100" name="Fine Amount" prop="fineAmount">
     </ngx-datatable-column>
     <ngx-datatable-column name="Date" prop="date"> </ngx-datatable-column>
     <ngx-datatable-column [minWidth]="200" name="Note" prop="note"> </ngx-datatable-column>
@@ -19,7 +21,7 @@
             (click)="openEditFineModal(EditFineModalTemplate, value)">
             Edit
           </button>
-          <button type="button" class="btn btn-outline-danger" (click)="Delete(value)">
+          <button type="button" class="btn btn-outline-danger" (click)="openDeleteFineModal(DeleteFineModalTemplate, value)">
             Delete
           </button>
         </div>
@@ -52,7 +54,7 @@
           class="form-control"/> -->
           <label for="fineType">Fine Type :</label>
           <select class="form-control mb-2 form-select" id="fineType" formControlName="fineType">
-            <option value="">Select fine type...</option>
+            <option [ngValue]="editFineForm.value.fineType">{{fineTypes[editFineForm.value.fineType]}}</option>
             <option *ngFor="let fineType of keys(fineTypes)" [ngValue]="fineType">
               {{ fineTypes[fineType] }}
             </option>
@@ -74,5 +76,21 @@
   <div class="modal-footer justify-content-between">
     <button type="button" class="btn btn-success" (click)="modalRef.hide();edit(editFineForm.value.id)">Save</button>
     <button type="button" class="btn btn-default" (click)="modalRef.hide()">Cancel</button>
+  </div>
+</ng-template>
+
+<ng-template #DeleteFineModalTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Delete Fine</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Are you sure you want to delete this fine?
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-danger" (click)="modalRef.hide();Delete(modalRef.content);">Delete</button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
   </div>
 </ng-template>

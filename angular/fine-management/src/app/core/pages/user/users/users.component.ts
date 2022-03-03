@@ -1,19 +1,19 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from 'src/app/core/services/user.service';
 import {
   FormGroup,
   FormBuilder,
   FormControl,
   Validators,
 } from '@angular/forms';
-import { MyProfileService } from 'src/app/services/my-profile.service';
-import { UserTeamService } from 'src/app/services/user-team.service';
-import { Team } from 'src/app/models/team';
-import { UserTeam } from 'src/app/models/user-team';
-import { TeamService } from 'src/app/services/team.service';
-import { User } from '../user';
+import { MyProfileService } from 'src/app/core/services/my-profile.service';
+import { UserTeamService } from 'src/app/core/services/user-team.service';
+import { Team } from 'src/app/core/models/team';
+import { UserTeam } from 'src/app/core/models/user-team';
+import { TeamService } from 'src/app/core/services/team.service';
 import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-users',

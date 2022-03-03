@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserTeam } from '../models/user-team';
-import { UserTeamService } from '../services/user-team.service';
+import { UserTeam } from '../core/models/user-team';
+import { UserTeamService } from '../core/services/user-team.service';
 
 @Injectable()
 export class AccessChecker {

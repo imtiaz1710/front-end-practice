@@ -2,16 +2,15 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { Team } from 'src/app/models/team';
-import { Transaction } from 'src/app/models/transaction';
-import { UserTeam } from 'src/app/models/user-team';
-import { MyProfileService } from 'src/app/services/my-profile.service';
-import { TeamService } from 'src/app/services/team.service';
-import { TransactionService } from 'src/app/services/transaction.service';
-import { UserTeamService } from 'src/app/services/user-team.service';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/user/user';
-
+import { Team } from 'src/app/core/models/team';
+import { Transaction } from 'src/app/core/models/transaction';
+import { User } from 'src/app/core/models/user';
+import { UserTeam } from 'src/app/core/models/user-team';
+import { MyProfileService } from 'src/app/core/services/my-profile.service';
+import { TeamService } from 'src/app/core/services/team.service';
+import { TransactionService } from 'src/app/core/services/transaction.service';
+import { UserTeamService } from 'src/app/core/services/user-team.service';
+import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-add-and-view-transaction',
   templateUrl: './add-and-view-transaction.component.html',

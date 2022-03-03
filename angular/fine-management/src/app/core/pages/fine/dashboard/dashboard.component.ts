@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Fine } from 'src/app/models/fine';
-import { Team } from 'src/app/models/team';
-import { Transaction } from 'src/app/models/transaction';
-import { UserTeam } from 'src/app/models/user-team';
-import { FineService } from 'src/app/services/fine.service';
-import { MyProfileService } from 'src/app/services/my-profile.service';
-import { TransactionService } from 'src/app/services/transaction.service';
-import { UserTeamService } from 'src/app/services/user-team.service';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/user/user';
+import { Fine } from 'src/app/core/models/fine';
+import { Team } from 'src/app/core/models/team';
+import { Transaction } from 'src/app/core/models/transaction';
+import { User } from 'src/app/core/models/user';
+import { UserTeam } from 'src/app/core/models/user-team';
+import { FineService } from 'src/app/core/services/fine.service';
+import { MyProfileService } from 'src/app/core/services/my-profile.service';
+import { TransactionService } from 'src/app/core/services/transaction.service';
+import { UserTeamService } from 'src/app/core/services/user-team.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-dashboard',

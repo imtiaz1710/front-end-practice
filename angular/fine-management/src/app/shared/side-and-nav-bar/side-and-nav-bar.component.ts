@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MyProfileService } from 'src/app/services/my-profile.service';
-import { User } from 'src/app/user/user';
+import { User } from 'src/app/core/models/user';
+import { MyProfileService } from 'src/app/core/services/my-profile.service';
 import { AccessChecker } from '../access-checker';
 
 

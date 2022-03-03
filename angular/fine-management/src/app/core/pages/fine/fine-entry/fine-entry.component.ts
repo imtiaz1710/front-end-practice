@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router, RouterLink } from '@angular/router';
-import { Team } from 'src/app/models/team';
-import { UserTeam } from 'src/app/models/user-team';
-import { MyProfileService } from 'src/app/services/my-profile.service';
-import { TeamService } from 'src/app/services/team.service';
-import { UserTeamService } from 'src/app/services/user-team.service';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/user/user';
+import { Team } from 'src/app/core/models/team';
+import { UserTeam } from 'src/app/core/models/user-team';
+import { MyProfileService } from 'src/app/core/services/my-profile.service';
+import { TeamService } from 'src/app/core/services/team.service';
+import { UserTeamService } from 'src/app/core/services/user-team.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FineTypes } from '../../enums/fine-types';
-import { FineService } from 'src/app/services/fine.service';
+import { FineTypes } from '../../../enums/fine-types';
+import { FineService } from 'src/app/core/services/fine.service';
 import { ToastrService } from 'ngx-toastr';
-import { Fine } from 'src/app/models/fine';
+import { Fine } from 'src/app/core/models/fine';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-fine-entry',

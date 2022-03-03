@@ -4,8 +4,8 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { Router, RouterLink } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/user/user';
+import { User } from 'src/app/core/models/user';
+import { UserService } from 'src/app/core/services/user.service';
 import Validation from '../validation';
 
 @Component({

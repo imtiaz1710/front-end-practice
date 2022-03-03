@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { LogoutComponent } from './auth/logout/logout.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { DashboardComponent } from './fine/dashboard/dashboard.component';
-import { FineEntryComponent } from './fine/fine-entry/fine-entry.component';
-import { FineListComponent } from './fine/fine-list/fine-list.component';
-import { ReportComponent } from './fine/report/report.component';
+import { DashboardComponent } from './core/pages/fine/dashboard/dashboard.component';
+import { FineEntryComponent } from './core/pages/fine/fine-entry/fine-entry.component';
+import { FineListComponent } from './core/pages/fine/fine-list/fine-list.component';
+import { ReportComponent } from './core/pages/fine/report/report.component';
+import { AddAndViewTransactionComponent } from './core/pages/transaction/add-and-view-transaction/add-and-view-transaction.component';
 import { SideAndNavBarComponent } from './shared/side-and-nav-bar/side-and-nav-bar.component';
-import { AddAndViewTransactionComponent } from './transaction/add-and-view-transaction/add-and-view-transaction.component';
-import { UserInfoComponent } from './user/user-info/user-info.component';
-import { UsersComponent } from './user/users/users.component';
+import { UserInfoComponent } from './core/pages/user/user-info/user-info.component';
+import { LoginComponent } from './core/pages/auth/login/login.component';
+import { SignupComponent } from './core/pages/auth/signup/signup.component';
+import { LogoutComponent } from './core/pages/auth/logout/logout.component';
+import { UsersComponent } from './core/pages/user/users/users.component';
 
 
 const routes: Routes = [

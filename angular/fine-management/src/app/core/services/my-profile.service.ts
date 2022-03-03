@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
+import { User } from '../models/user';
 import { UserTeam } from '../models/user-team';
-import { User } from '../user/user';
 import { TeamService } from './team.service';
 import { UserTeamService } from './user-team.service';
 

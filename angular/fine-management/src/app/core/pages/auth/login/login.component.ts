@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { UserTeam } from 'src/app/models/user-team';
-import { UserTeamService } from 'src/app/services/user-team.service';
+import { UserTeam } from 'src/app/core/models/user-team';
+import { UserTeamService } from 'src/app/core/services/user-team.service';
 
 @Component({
   selector: 'app-login',

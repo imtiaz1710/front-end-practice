@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { MyProfileService } from 'src/app/services/my-profile.service';
-import { Team } from 'src/app/models/team';
+import { MyProfileService } from 'src/app/core/services/my-profile.service';
+import { Team } from 'src/app/core/models/team';
+import { User } from 'src/app/core/models/user';
 
 @Component({
   selector: 'app-user-info',

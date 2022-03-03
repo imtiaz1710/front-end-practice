@@ -2,16 +2,16 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { Fine } from 'src/app/models/fine';
-import { Team } from 'src/app/models/team';
-import { UserTeam } from 'src/app/models/user-team';
-import { FineService } from 'src/app/services/fine.service';
-import { MyProfileService } from 'src/app/services/my-profile.service';
-import { TeamService } from 'src/app/services/team.service';
-import { UserTeamService } from 'src/app/services/user-team.service';
-import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/user/user';
-import { FineTypes } from '../../enums/fine-types';
+import { FineTypes } from 'src/app/core/enums/fine-types';
+import { Fine } from 'src/app/core/models/fine';
+import { Team } from 'src/app/core/models/team';
+import { User } from 'src/app/core/models/user';
+import { UserTeam } from 'src/app/core/models/user-team';
+import { FineService } from 'src/app/core/services/fine.service';
+import { MyProfileService } from 'src/app/core/services/my-profile.service';
+import { TeamService } from 'src/app/core/services/team.service';
+import { UserTeamService } from 'src/app/core/services/user-team.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
   selector: 'app-fine-list',

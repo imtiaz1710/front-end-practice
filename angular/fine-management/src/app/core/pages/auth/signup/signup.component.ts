@@ -79,7 +79,6 @@ export class SignupComponent implements OnInit {
 
     if (this.signupForm.valid) {
       this.submitted = false;
-
       this.userService.addUser(this.signupForm.value).subscribe({
         next: (u) => {
           this.toasterService.success('Sign up Successful!');

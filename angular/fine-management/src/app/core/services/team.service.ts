@@ -9,22 +9,19 @@ import { Team } from '../models/team';
 export class TeamService {
   constructor(private http: HttpClient) {}
 
-  getTeamById(id: number): Observable<Team> {
-    return <Observable<Team>>this.http.get(`http://localhost:3000/teams/${id}`);
+  addTeam(feam: Team): Observable<Team> {
+    return this.http.post<Team>(`https://localhost:44341/api/Team`, feam);
+  }
+
+  updateTeam(id: number, feam: Team): Observable<Team> {
+    return this.http.put<Team>(`https://localhost:44341/api/Team/${id}`, feam);
   }
 
   getAllTeams(): Observable<Team[]> {
-    return <Observable<Team[]>>this.http.get(`http://localhost:3000/teams`);
+    return this.http.get<Team[]>(`https://localhost:44341/api/Team`);
   }
 
-  getAllTeamsPromise(): Promise<Team[]> {
-    return new Promise((resolve, reject) => {
-      this.http
-        .get(`http://localhost:3000/teams`)
-        .subscribe({
-          next: (teams: Team[]) => resolve(teams),
-          error: (err) => reject(err)
-        });
-    });
+  deleteTeam(id: number): Observable<number> {
+    return this.http.delete<number>(`https://localhost:44341/api/Team/${id}`);
   }
 }

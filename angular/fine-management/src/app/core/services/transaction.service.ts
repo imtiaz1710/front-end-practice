@@ -4,28 +4,24 @@ import { Observable } from 'rxjs';
 import { Transaction } from '../models/transaction';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransactionService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-  
   addTransaction(transaction: Transaction): Observable<Transaction> {
-    return <Observable<Transaction>>(
-      this.http.post(`http://localhost:3000/transactions`, transaction)
-    );
+    return this.http.post<Transaction>(`https://localhost:44341/api/Transaction`, transaction);
+  }
+
+  updateTransaction(id: number, transaction: Transaction): Observable<Transaction> {
+    return this.http.put<Transaction>(`https://localhost:44341/api/Transaction/${id}`, transaction);
   }
 
   getAllTransactions(): Observable<Transaction[]> {
-    return <Observable<Transaction[]>>this.http.get(`http://localhost:3000/transactions`);
+    return this.http.get<Transaction[]>(`https://localhost:44341/api/Transaction`);
   }
 
-  updateFine(id: number, transaction: Transaction): Observable<Transaction> {
-    return <Observable<Transaction>>this.http.put(`http://localhost:3000/transactions/${id}`, transaction);
-  }
-
-  deleteFine(id: number): Observable<Transaction[]>
-  {
-    return <Observable<Transaction[]>>this.http.delete(`http://localhost:3000/transactions/${id}`);
+  deleteTransaction(id: number): Observable<number> {
+    return this.http.delete<number>(`https://localhost:44341/api/Transaction/${id}`);
   }
 }

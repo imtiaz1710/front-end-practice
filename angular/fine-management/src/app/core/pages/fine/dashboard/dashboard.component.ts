@@ -13,7 +13,7 @@ import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
   users: User[];
@@ -28,17 +28,18 @@ export class DashboardComponent implements OnInit {
   filteredTransactions: Transaction[];
   filteredUser: User;
 
-  constructor(private userService: UserService,
+  constructor(
+    private userService: UserService,
     private userTeamService: UserTeamService,
     private myProfileService: MyProfileService,
     private transactionService: TransactionService,
-    private fineService: FineService) { }
+    private fineService: FineService
+  ) {}
 
   ngOnInit(): void {
     this.myProfileService
-      .getMyTeamsPromise()
-      .then((teams) => (this.myTeams = teams))
-      .catch((err) => console.log(err));
+      .getMyActiveTeamsAsync()
+      .then((ts) => (this.myTeams = ts));
 
     this.userService.getAllUsers().subscribe({
       next: (users) => (this.users = users),
@@ -62,63 +63,73 @@ export class DashboardComponent implements OnInit {
   }
 
   LoadUserTeamsByTeamId(teamId: number) {
-    this.filteredUserTeams = this.userTeams.filter(ut => ut.teamId == teamId);
+    this.filteredUserTeams = this.userTeams.filter((ut) => ut.teamId == teamId);
   }
 
   LoadUserByUserTeam(userTeam: UserTeam) {
-    this.filteredUser = this.users.find(u => u.id == userTeam.userId);
+    this.filteredUser = this.users.find((u) => u.id == userTeam.userId);
   }
 
   LoadFinesByUserTeamId(userTeamId: number) {
-    this.filteredFines = this.fines.filter(f => f.userTeamId == userTeamId);
+    this.filteredFines = this.fines.filter((f) => f.userTeamId == userTeamId);
   }
 
   LoadTransactionsByUserTeamId(userTeamId: number) {
-    this.filteredTransactions = this.transactions.filter(tn => tn.userTeamId == userTeamId);
+    this.filteredTransactions = this.transactions.filter(
+      (tn) => tn.userTeamId == userTeamId
+    );
   }
 
   calculateTotalFineByUserTeamId(userTeamId: number): number {
     this.LoadFinesByUserTeamId(userTeamId);
     let sum: number = 0;
-    this.filteredFines.forEach(f => sum += <number>f.fineAmount);
+    this.filteredFines.forEach((f) => (sum += <number>f.fineAmount));
     return sum;
   }
 
   calculateTotalTransactionByUserTeamId(userTeamId: number): number {
     this.LoadTransactionsByUserTeamId(userTeamId);
     let sum = 0;
-    this.filteredTransactions.forEach(tn => sum += tn.transactionAmount);
+    this.filteredTransactions.forEach((tn) => (sum += tn.transactionAmount));
     return sum;
   }
 
   calculateTotalTransactionAmountByTeamId(teamId: number): number {
-    const userTeamsOfMyTeam: UserTeam[] = this.userTeams.filter(ut => ut.teamId == teamId);
+    const userTeamsOfMyTeam: UserTeam[] = this.userTeams.filter(
+      (ut) => ut.teamId == teamId
+    );
     let transactionsOfMyTeam: Transaction[] = [];
 
-    userTeamsOfMyTeam.forEach(ut => {
-      let transactions: Transaction[] = this.transactions.filter(tn => tn.userTeamId == ut.id);
+    userTeamsOfMyTeam.forEach((ut) => {
+      let transactions: Transaction[] = this.transactions.filter(
+        (tn) => tn.userTeamId == ut.id
+      );
       transactionsOfMyTeam.push(...transactions);
-    })
+    });
 
     let totalTransactionAmount = 0;
 
-    transactionsOfMyTeam.forEach(tn => totalTransactionAmount += tn.transactionAmount)
+    transactionsOfMyTeam.forEach(
+      (tn) => (totalTransactionAmount += tn.transactionAmount)
+    );
 
     return totalTransactionAmount;
   }
 
   calculateTotalFineAmountByTeamId(teamId: number): number {
-    const userTeamsOfMyTeam: UserTeam[] = this.userTeams.filter(ut => ut.teamId == teamId);
+    const userTeamsOfMyTeam: UserTeam[] = this.userTeams.filter(
+      (ut) => ut.teamId == teamId
+    );
     let finesOfMyTeam: Fine[] = [];
 
-    userTeamsOfMyTeam.forEach(ut => {
-      let fines: Fine[] = this.fines.filter(f => f.userTeamId == ut.id);
+    userTeamsOfMyTeam.forEach((ut) => {
+      let fines: Fine[] = this.fines.filter((f) => f.userTeamId == ut.id);
       finesOfMyTeam.push(...fines);
-    })
+    });
 
     let totalFineAmount: number = 0;
 
-    finesOfMyTeam.forEach(f => totalFineAmount += <number>f.fineAmount);
+    finesOfMyTeam.forEach((f) => (totalFineAmount += <number>f.fineAmount));
 
     return totalFineAmount;
   }

@@ -64,10 +64,7 @@ export class FineEntryComponent implements OnInit {
       error: (err) => console.log(err),
     });
 
-    this.myProfileService
-      .getMyTeamsPromise()
-      .then((teams) => (this.myTeams = teams))
-      .catch((err) => console.log(err));
+    this.myProfileService.getMyActiveTeamsAsync().then((ts) => this.myTeams = ts);
   }
 
   onSelect() {

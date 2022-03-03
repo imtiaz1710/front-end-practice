@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/core/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,36 +14,39 @@ import { User } from 'src/app/core/models/user';
 })
 export class UserInfoComponent implements OnInit {
   private json = localStorage.getItem('user');
-  userId = JSON.parse(this.json).id;
+  userId: number;
   user: User;
+  users: User[];
   editForm: FormGroup;
   viewMode: boolean = true;
   myTeams: Team[] = [];
 
   constructor(
+    private userService: UserService,
     private http: HttpClient,
     private formBuilder: FormBuilder,
     private toasterService: ToastrService,
     private myProfileService: MyProfileService
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-    this.http.get<any>(`http://localhost:3000/users/${this.userId}`).subscribe({
-      next: (res: any) => {
-        this.user = res;
-        this.editForm = this.formBuilder.group({
-          name: [this.user.name],
-          phoneNo: [this.user.phoneNo],
-          designation: [this.user.designation],
-          address: [this.user.address],
-        });
-      },
-      error: (err: any) => this.toasterService.error('Error!'),
+  async ngOnInit() {
+    this.userId = JSON.parse(this.json).id;
+
+    await this.userService.getAllUsers().subscribe({
+      next: (us) => (this.users = us),
+      error: (err) => console.log(err),
     });
 
-    this.myProfileService.getMyTeamsPromise()
-      .then(mts => this.myTeams = mts)
-      .catch(err => console.log(err));
+    this.user = this.users.find((u) => u.id == this.userId);
+
+    this.editForm = this.formBuilder.group({
+      name: [this.user.name],
+      phoneNo: [this.user.phoneNo],
+      designation: [this.user.designation],
+      address: [this.user.address],
+    });
+
+    this.myTeams = await this.myProfileService.getMyActiveTeamsAsync();
   }
 
   onClick() {
@@ -55,15 +59,10 @@ export class UserInfoComponent implements OnInit {
     this.user.phoneNo = this.editForm.value.phoneNo;
     this.user.address = this.editForm.value.address;
 
-    this.http
-      .put<any>(`http://localhost:3000/users/${this.user.id}`, this.user)
-      .subscribe({
-        next: (res: any) => {
-          // this.user = res;
-          this.toasterService.success('Profile Info Successfully Updated!');
-          // this.editForm.reset();
-        },
-        error: (err: any) => this.toasterService.error('Error!'),
-      });
+    this.userService.updateUser(this.user.id, this.user).subscribe({
+      next: (u) =>
+        this.toasterService.success('Profile Info Successfully Updated!'),
+      error: (err) => this.toasterService.error('Error!'),
+    });
   }
 }

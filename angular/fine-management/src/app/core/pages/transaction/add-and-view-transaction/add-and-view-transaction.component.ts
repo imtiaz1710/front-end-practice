@@ -70,11 +70,8 @@ export class AddAndViewTransactionComponent implements OnInit {
       error: (err) => console.log(err),
     });
 
-    await this.myProfileService
-      .getMyTeamsPromise()
-      .then((teams) => (this.myTeams = teams))
-      .catch((err) => console.log(err));
-
+    this.myTeams = await this.myProfileService.getMyActiveTeamsAsync();
+    
     this.filteredTransactions = [];
     this.loadTransactionList();
     this.rows = this.formateFineList();
@@ -117,7 +114,7 @@ export class AddAndViewTransactionComponent implements OnInit {
     transaction.note = this.editTransactionForm.value.note;
     transaction.date = this.editTransactionForm.value.date;
 
-    this.transactionService.updateFine(transaction.id, transaction).subscribe({
+    this.transactionService.updateTransaction(transaction.id, transaction).subscribe({
       next: (res) => this.toastrService.success("Successfully updated!"),
       error: (err) => this.toastrService.error("Error!"),
       complete: () => this.loadAllDataForTrasactionTable()
@@ -125,7 +122,7 @@ export class AddAndViewTransactionComponent implements OnInit {
   }
 
   Delete(id: number) {
-    this.transactionService.deleteFine(id).subscribe({
+    this.transactionService.deleteTransaction(id).subscribe({
       next: (res) => this.toastrService.success("Successfully deleted!"),
       error: (err) => this.toastrService.error("Error!"),
       complete: () => this.loadAllDataForTrasactionTable()

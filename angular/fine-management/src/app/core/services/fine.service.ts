@@ -7,24 +7,21 @@ import { Fine } from '../models/fine';
   providedIn: 'root',
 })
 export class FineService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   addFine(fine: Fine): Observable<Fine> {
-    return <Observable<Fine>>(
-      this.http.post(`http://localhost:3000/fines`, fine)
-    );
+    return this.http.post<Fine>(`https://localhost:44341/api/Fine`, fine);
   }
 
   updateFine(id: number, fine: Fine): Observable<Fine> {
-    return <Observable<Fine>>this.http.put(`http://localhost:3000/fines/${id}`, fine);
+    return  this.http.put<Fine>(`https://localhost:44341/api/Fine/${id}`, fine);
   }
 
   getAllFines(): Observable<Fine[]> {
-    return <Observable<Fine[]>>this.http.get(`http://localhost:3000/fines`);
+    return this.http.get<Fine[]>(`https://localhost:44341/api/Fine`);
   }
 
-  deleteFine(id: number): Observable<Fine[]>
-  {
-    return <Observable<Fine[]>>this.http.delete(`http://localhost:3000/fines/${id}`);
+  deleteFine(id: number): Observable<number> {
+    return this.http.delete<number>(`https://localhost:44341/api/Fine/${id}`);
   }
 }

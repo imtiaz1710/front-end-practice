@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { UserTeam } from '../models/user-team';
 
@@ -10,41 +9,19 @@ import { UserTeam } from '../models/user-team';
 export class UserTeamService {
   constructor(private http: HttpClient) {}
 
-  getUserTeamByTeamId(teamId: number): Observable<UserTeam[]> {
-    return this.http.get<UserTeam[]>(
-      `http://localhost:3000/userTeams?teamId=${teamId}`
-    );
+  addUserTeam(userTeam: UserTeam): Observable<UserTeam> {
+    return this.http.post<UserTeam>(`https://localhost:44341/api/UserTeam`, userTeam);
   }
 
-  getUserTeamByUserId(userId: number): Observable<UserTeam[]> {
-    return this.http.get<UserTeam[]>(
-      `http://localhost:3000/userTeams?userId=${userId}`
-    );
+  updateUserTeam(id: number, userTeam: UserTeam): Observable<UserTeam> {
+    return this.http.put<UserTeam>(`https://localhost:44341/api/UserTeam/${id}`, userTeam);
   }
 
-  getAllUserTeamsPromise(): Promise<UserTeam[]> {
-    return new Promise((resolve, reject) => {
-      this.http.get(`http://localhost:3000/userTeams`).subscribe({
-        next: (userTeams: UserTeam[]) => resolve(userTeams),
-        error: (err) => reject(err)
-      });
-    });
+  getAllUserTeams(): Observable<UserTeam[]> {
+    return this.http.get<UserTeam[]>(`https://localhost:44341/api/UserTeam`);
   }
 
-  getAllUserTeams(): Observable<UserTeam[]>
-  {
-    return this.http.get<UserTeam[]>(
-      `http://localhost:3000/userTeams`
-    );
-  }
-
-  addUserTeam(userTeam: UserTeam)
-  {
-    return this.http.post(`http://localhost:3000/userTeams`, userTeam);
-  }
-
-  updateUserTeam(userTeam: UserTeam)
-  {
-    return this.http.put(`http://localhost:3000/userTeams/${userTeam.id}`, userTeam);
+  deleteUserTeam(id: number): Observable<number> {
+    return this.http.delete<number>(`https://localhost:44341/api/UserTeam/${id}`);
   }
 }

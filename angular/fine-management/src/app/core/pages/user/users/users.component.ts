@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit {
   myTeams: Team[] = [];
   addToTeamForm: FormGroup = new FormGroup({
     userId: new FormControl(''),
-    teamId: new FormControl('')
+    teamId: new FormControl(''),
   });
   teams: Team[] = [];
   users: User[] = [];
@@ -40,54 +40,57 @@ export class UsersComponent implements OnInit {
     private userTeamService: UserTeamService,
     private teamService: TeamService,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.addToTeamForm = this.formBuilder.group({
       userId: ['', Validators.required],
       teamId: ['', Validators.required],
     });
+
+    await this.userService.getAllUsers().subscribe({
+      next: (us) => (this.users = us),
+      error: (err) => console.log(err),
+    });
+
+    await this.teamService.getAllTeams().subscribe({
+      next: (t) => (this.teams = t),
+      error: (err) => console.log(err),
+    });
+
+    await this.userTeamService.getAllUserTeams().subscribe({
+      next: (uts) => (this.userTeams = uts),
+      error: (err) => console.log(err),
+    });
+
+    this.myTeams = await this.myProfileService.getMyActiveTeamsAsync();
 
     this.loadAllDataForDataTable();
   }
 
   loadAllDataForDataTable() {
     this.rows = [];
-    let usersPromise = this.userService.getAllUsersPromise();
-    let teamsPromise = this.teamService.getAllTeamsPromise();
-    let userTeamPromise = this.userTeamService.getAllUserTeamsPromise();
-    let myTeamsPromise = this.myProfileService.getMyTeamsPromise();
 
-    Promise.all([
-      usersPromise,
-      teamsPromise,
-      userTeamPromise,
-      myTeamsPromise,
-    ]).then((results) => {
-      this.users = results[0];
-      this.teams = results[1];
-      this.userTeams = results[2];
-      this.myTeams = results[3];
+    this.myTeams.forEach((myTeam) => {
+      let myUserTeamMates = this.userTeams.filter(
+        (ut) => ut.teamId == myTeam.id && ut.isActive
+      );
+      
+      myUserTeamMates.forEach((userTeamMate) => {
+        let user = this.users.filter((u) => u.id == userTeamMate.userId)[0];
+        let team = this.teams.filter((t) => t.id == userTeamMate.teamId)[0];
 
-      this.myTeams.forEach((myTeam) => {
-        let myUserTeamMates = this.userTeams.filter(
-          (ut) => ut.teamId == myTeam.id && ut.isActive
-        );
-        myUserTeamMates.forEach((userTeamMate) => {
-          let user = this.users.filter((u) => u.id == userTeamMate.userId)[0];
-          let team = this.teams.filter((t) => t.id == userTeamMate.teamId)[0];
-
-          let userTeam = {
-            ...user,
-            teamName: team.name,
-            userTeamId: userTeamMate.id,
-          };
-          this.rows.push(userTeam);
-        });
+        let userTeam = {
+          ...user,
+          teamName: team.name,
+          userTeamId: userTeamMate.id,
+        };
+        this.rows.push(userTeam);
       });
+    });
 
-      this.rows = this.rows.map(
-        (row) =>
+    this.rows = this.rows.map(
+      (row) =>
         (row = {
           name: row.name,
           email: row.email,
@@ -95,8 +98,7 @@ export class UsersComponent implements OnInit {
           teamName: row.teamName,
           userTeamId: row.userTeamId,
         })
-      );
-    });
+    );
   }
 
   onAdd() {
@@ -115,7 +117,7 @@ export class UsersComponent implements OnInit {
     } else {
       let userTeam: UserTeam = {
         ...this.addToTeamForm.value,
-        isActive: true
+        isActive: true,
       };
 
       this.userTeamService.addUserTeam(userTeam).subscribe({
@@ -130,7 +132,7 @@ export class UsersComponent implements OnInit {
   }
 
   openAddUserModal(template: TemplateRef<any>) {
-    debugger
+    debugger;
     if (this.addToTeamForm.valid)
       this.modalRef = this.modalService.show(template);
     else this.toastrService.error('invalid operation!');
@@ -142,7 +144,7 @@ export class UsersComponent implements OnInit {
   }
 
   onDelete(value) {
-    debugger
+    debugger;
     let userTeam = this.userTeams.filter((ut) => ut.id == value)[0];
     this.changeStatusOfUserTeam(userTeam, false);
   }
@@ -150,13 +152,13 @@ export class UsersComponent implements OnInit {
   changeStatusOfUserTeam(userTeam: UserTeam, status: boolean) {
     userTeam.isActive = status;
 
-    this.userTeamService.updateUserTeam(userTeam).subscribe({
-      next: (res) => {
+    this.userTeamService.updateUserTeam(userTeam.id, userTeam).subscribe({
+      next: (ut) => {
         this.toastrService.success('Done!');
         this.addToTeamForm.reset();
         this.loadAllDataForDataTable();
       },
-      error: (err) => this.toastrService.error('Operation Failed!')
+      error: (err) => this.toastrService.error('Operation Failed!'),
     });
   }
 }

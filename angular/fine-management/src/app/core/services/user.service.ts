@@ -2,35 +2,26 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { UserTeamService } from './user-team.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(
-    private http: HttpClient,
-    private userTeamService: UserTeamService
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`http://localhost:3000/users/${id}`);
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(`https://localhost:44341/api/User`, user);
   }
 
-  async getAllUsersAsync() {
-    return this.http.get<User[]>('http://localhost:3000/users');
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`https://localhost:44341/api/User/${id}`, user);
   }
 
-  getAllUsers() {
-    return this.http.get<User[]>('http://localhost:3000/users');
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`https://localhost:44341/api/User`);
   }
 
-  getAllUsersPromise(): Promise<User[]> {
-    return new Promise((resolve, reject) => {
-      this.http.get(`http://localhost:3000/users`).subscribe({
-        next: (users: User[]) => resolve(users),
-        error: (err) => reject(err),
-      });
-    });
+  deleteUser(id: number): Observable<number> {
+    return this.http.delete<number>(`https://localhost:44341/api/User/${id}`);
   }
 }

@@ -68,11 +68,8 @@ export class FineListComponent implements OnInit {
       error: (err) => console.log(err),
     });
 
-    await this.myProfileService
-      .getMyTeamsPromise()
-      .then((teams) => (this.myTeams = teams))
-      .catch((err) => console.log(err));
-
+    this.myTeams = await this.myProfileService.getMyActiveTeamsAsync();
+    
     this.loadFineList();
     this.rows = this.formateFineList();
   }

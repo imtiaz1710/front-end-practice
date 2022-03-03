@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/core/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -21,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userTeamService: UserTeamService,
+    private userService: UserService,
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     private router: Router,
     private toasterService: ToastrService
   ) {}
@@ -52,10 +53,11 @@ export class LoginComponent implements OnInit {
 
     if (this.loginForm.valid) {
       this.submitted = false;
-      this.http.get<any>('http://localhost:3000/users').subscribe({
-        next: (res) => {
-          const user = res.find(
-            (x: any) =>
+
+      this.userService.getAllUsers().subscribe({
+        next: (us) => {
+          const user = us.find(
+            (x) =>
               x.email === this.loginForm.value.email &&
               x.password === this.loginForm.value.password
           );
